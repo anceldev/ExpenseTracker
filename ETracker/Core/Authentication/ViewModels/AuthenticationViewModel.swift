@@ -56,8 +56,29 @@ final class AuthenticationViewModel: ObservableObject {
         confirmPassword = ""
     }
     
+    func login() {
+        Task {
+            await signInWithEmailPassword()
+        }
+    }
+    
     @MainActor
-    func signInWithEmailPassword() async {
+    func signOut() {
+        if AuthService.shared.signOut() {
+            self.authenticationState = .authenticated
+            self.flow = .login
+            print("User is:  \(self.user?.email ?? "No email")")
+        }
+    }
+    
+    func signUp() {
+        Task {
+            await signUpWithEmailPassword()
+        }
+    }
+    
+    @MainActor
+    private func signInWithEmailPassword() async {
         authenticationState = .authenticating
         do {
             self.user = try await AuthService.shared.signInWithEmailPassword(email: self.email, password: self.password)
@@ -69,14 +90,17 @@ final class AuthenticationViewModel: ObservableObject {
     }
     
     @MainActor
-    func signUpWithEmailPassword() async {
+    private func signUpWithEmailPassword() async {
         authenticationState = .authenticating
         do {
             self.user = try await AuthService.shared.signUpWithEmailPassword(email: self.email, password: self.password, fullname: self.fullname, username: self.username)
             authenticationState = .authenticated
+            return
         } catch {
             print("DEBUG: Failed to sign up with AuthService \(error.localizedDescription)")
         }
     }
+    
+    
 }
 

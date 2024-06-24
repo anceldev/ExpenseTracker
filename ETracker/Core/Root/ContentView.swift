@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
-//    @Environment(AuthenticationViewModel.self) private var authViewModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     
     var body: some View {
         NavigationStack {
             switch authViewModel.authenticationState {
             case .unauthenticated:
-                SignInView()
+                AuthenticationView()
+                    .environmentObject(authViewModel)
             case .authenticating:
                 ProgressView()
             case .authenticated:

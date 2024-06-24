@@ -19,72 +19,93 @@ struct SignInView: View {
                 .font(.system(size: 32, weight: .bold, design: .rounded))
                 .foregroundStyle(.purple700)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            VStack {
+            VStack(spacing: 20) {
                 VStack(alignment: .leading) {
-                    CustomInputField(title: "Email", text: viewModel.email, imageName: "user", autoCorrection: false) {
-                        TextField("Email", text: $viewModel.email)
-                    }
+                    CustomInputField(
+                        title: "Email",
+                        text: viewModel.email,
+                        imageName: "user",
+                        autoCorrectionDisabled: true) {
+                            TextField("Email", text: $viewModel.email)
+                                .textInputAutocapitalization(.never)
+                        }
                 }
                 VStack(alignment: .leading) {
-                    CustomInputField(title: "Password", text: viewModel.password, imageName: "key", autoCorrection: true) {
+                    CustomInputField(title: "Password", text: viewModel.password, imageName: "key", autoCorrectionDisabled: true) {
                         SecureField("Password", text: $viewModel.password)
+                            .textInputAutocapitalization(.never)
                     }
                 }
-            }
-            Button(action: {
-                // Sign in button
-            }, label: {
-                Text("Sign In")
-            })
-            .buttonStyle(.mainButton(purpleButton, stroke: .purple700, shadow: .purple400))
-            
-            HStack {
                 HStack {
-                    Toggle("Remember", systemImage: acceptConditions ? "checkmark.square.fill" : "square", isOn: $acceptConditions)
-                        .toggleStyle(.button)
-                        .labelStyle(.iconOnly)
-                        .font(.title3)
-                        .tint(.purple700)
-                    Text("Remember me")
-                }
-                Spacer()
-                HStack {
-                    NavigationLink {
-//                        RecoverPasswordView()
-                        Text("Recover password")
-                            .environmentObject(viewModel)
-                            .navigationBarBackButtonHidden()
-                            
-                    } label: {
-                        Text("Forgot your password?")
-                            .foregroundStyle(.purple700)
+                    Spacer()
+                    HStack {
+//                        NavigationLink {
+//                            RestorePasswordView()
+//                                .environmentObject(viewModel)
+//                                .navigationBarBackButtonHidden()
+//                        } label: {
+//                            Text("Forgot your password?")
+//                                .foregroundStyle(.purple700)
+//                        }
+                        Button(action: {
+                            withAnimation {
+                                viewModel.flow = .recovery                                
+                            }
+                        }, label: {
+                            Text("Forgot your password?")
+                                .foregroundStyle(.purple700)
+                        })
                     }
                 }
+                .font(.system(size: 14, weight: .semibold, design: .rounded))
             }
-            .font(.system(size: 14, weight: .semibold, design: .rounded))
             
             FormDivider()
             
             Spacer()
+            Button(action: {
+                // Sign in button
+                viewModel.login()
+            }, label: {
+                if viewModel.authenticationState == .authenticating {
+                    ProgressView()
+                } else{
+                    Text("Sign In")
+                }
+            })
+            .buttonStyle(.mainButton(purpleButton, stroke: .purple700, shadow: .purple400))
             VStack(alignment: .center) {
-                NavigationLink {
-                    Text("Sign up view")
-                        .navigationBarBackButtonHidden()
-                        .environmentObject(viewModel)
-                } label: {
-                    HStack(alignment: .center) {
-                        Text("Don't you have an account? ")
-                            .foregroundStyle(.black)
-                        +
+                //                NavigationLink {
+                //                    SignUpView()
+                //                        .navigationBarBackButtonHidden()
+                //                        .environmentObject(viewModel)
+                //                } label: {
+                //                    HStack(alignment: .center) {
+                //                        Text("Don't you have an account? ")
+                //                            .foregroundStyle(.black)
+                //                        +
+                //                        Text("Sign up.")
+                //                            .foregroundStyle(.purple700)
+                //                            .fontWeight(.bold)
+                //                    }
+                //                    .font(.system(size: 16, design: .rounded))
+                //                }
+                HStack(alignment: .center) {
+                    Text("Don't you have an account? ")
+                        .foregroundStyle(.black)
+                    Button(action: {
+                        withAnimation {
+                            viewModel.flow = .signUp
+                        }
+                    }, label: {
                         Text("Sign up.")
                             .foregroundStyle(.purple700)
-                    }
-                    .font(.callout)
+                            .fontWeight(.bold)
+                    })
                 }
             }
             .frame(maxWidth: .infinity)
             .padding(.bottom, 20)
-            
         })
         .padding()
     }

@@ -18,14 +18,18 @@ struct MainTab<Content: View>: View where Content: View {
         VStack {
             navigationBar()
             TabView {
-                
+                TransactionsView()
+                    .tabItemModifier("house")
             }
         }
     }
 }
 
 #Preview {
-    MainTab {
-        ProfileBar()
+    NavigationStack {
+        MainTab {
+            ProfileBar()
+        }
+        .environmentObject(AuthenticationViewModel())
     }
 }

@@ -24,7 +24,7 @@ public class Transaction: Identifiable {
         amount: Double = 0.00,
         transactionKind: Transaction.Kind = .income,
         category: Category,
-        timestamp: Date = .now,
+        timestamp: Date? = .now,
         receipt: Data? = nil
     ) {
         self.id = id
@@ -32,7 +32,7 @@ public class Transaction: Identifiable {
         self.amount = amount
         self.transactionKind = transactionKind
         self.category = category
-        self.timestamp = timestamp
+        self.timestamp = timestamp!
         self.receipt = receipt
     }
 }

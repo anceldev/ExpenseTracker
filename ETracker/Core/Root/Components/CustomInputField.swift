@@ -16,14 +16,13 @@ struct CustomInputField<InputField: View>: View where InputField: View {
     @ViewBuilder var inputField: () -> InputField
     
 
-    init(title: String, text: String, imageName: String, autoCorrection: Bool, @ViewBuilder inputField: @escaping () -> InputField) {
+    init(title: String, text: String, imageName: String, autoCorrectionDisabled: Bool, @ViewBuilder inputField: @escaping () -> InputField) {
         self.title = title
         self.text = text
         self.imageName = imageName
-        self.autoCorrectionDisabled = autoCorrection
+        self.autoCorrectionDisabled = autoCorrectionDisabled
         self.inputField = inputField
     }
-    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -44,7 +43,6 @@ struct CustomInputField<InputField: View>: View where InputField: View {
                 inputField()
                     .font(.system(size: 18, weight: .bold, design: .rounded))
                     .autocorrectionDisabled(autoCorrectionDisabled)
-                
                 Spacer()
             }
             .customInputField(.infinity)
@@ -54,7 +52,7 @@ struct CustomInputField<InputField: View>: View where InputField: View {
 
 #Preview {
     VStack {
-        CustomInputField(title: "Email", text: "Email", imageName: "user", autoCorrection: false) {
+        CustomInputField(title: "Email", text: "Email", imageName: "user", autoCorrectionDisabled: true) {
             TextField("", text: .constant(""))
         }
     }

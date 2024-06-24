@@ -16,7 +16,7 @@ final public class Subscription: Identifiable {
     let billing: Billing
     let chargeDate: Date?
     let active: Bool
-    let notification: Subscription.Notification?
+    let notification: SubNotification?
     @Attribute(.externalStorage) let serviceLogo: Data?
     
     init(
@@ -26,7 +26,7 @@ final public class Subscription: Identifiable {
         billing: Billing = .monthly,
         chargeDate: Date? = nil,
         active: Bool = false,
-        notification: Subscription.Notification? = nil,
+        notification: SubNotification? = nil,
         serviceLogo: Data? = nil
     ) {
         self.id = id

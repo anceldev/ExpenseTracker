@@ -23,7 +23,7 @@
 		B47163172C298F450030CE5B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163162C298F450030CE5B /* Icon.swift */; };
 		B47163192C298F530030CE5B /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163182C298F530030CE5B /* HexColor.swift */; };
 		B471631B2C298F710030CE5B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631A2C298F710030CE5B /* Subscription.swift */; };
-		B471631D2C298F980030CE5B /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631C2C298F980030CE5B /* Notification.swift */; };
+		B471631D2C298F980030CE5B /* SubNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631C2C298F980030CE5B /* SubNotification.swift */; };
 		B471631F2C2992920030CE5B /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631E2C2992920030CE5B /* MainTab.swift */; };
 		B47163212C2993580030CE5B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163202C2993580030CE5B /* SignInView.swift */; };
 		B47163232C2993730030CE5B /* ProfileBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163222C2993730030CE5B /* ProfileBar.swift */; };
@@ -34,6 +34,20 @@
 		B471632E2C29A6690030CE5B /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471632D2C29A6690030CE5B /* Buttons.swift */; };
 		B47163302C29A8150030CE5B /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471632F2C29A8150030CE5B /* Gradients.swift */; };
 		B47163322C29B58A0030CE5B /* FormDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163312C29B58A0030CE5B /* FormDivider.swift */; };
+		B47163342C29BF890030CE5B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163332C29BF890030CE5B /* SignUpView.swift */; };
+		B47163362C29C6710030CE5B /* RestorePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163352C29C6710030CE5B /* RestorePasswordView.swift */; };
+		B47163382C29DCFC0030CE5B /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163372C29DCFC0030CE5B /* AuthenticationView.swift */; };
+		B471633D2C29E0B30030CE5B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471633C2C29E0B30030CE5B /* AccountView.swift */; };
+		B471633F2C29E2EA0030CE5B /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471633E2C29E2EA0030CE5B /* TransactionsView.swift */; };
+		B47163412C29E32B0030CE5B /* TanItemModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163402C29E32B0030CE5B /* TanItemModifier.swift */; };
+		B47163432C29E3D60030CE5B /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163422C29E3D60030CE5B /* TransactionsViewModel.swift */; };
+		B47163462C29E44E0030CE5B /* CreateTransactionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163452C29E44E0030CE5B /* CreateTransactionUseCase.swift */; };
+		B47163482C29E5EF0030CE5B /* FetchAllTransactionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163472C29E5EF0030CE5B /* FetchAllTransactionsUseCase.swift */; };
+		B471634A2C29E63F0030CE5B /* RemoveTransactionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163492C29E63F0030CE5B /* RemoveTransactionUseCase.swift */; };
+		B471634C2C29E6800030CE5B /* UpdateTransactionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471634B2C29E6800030CE5B /* UpdateTransactionUseCase.swift */; };
+		B48AFB212C29F540008C0886 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB202C29F540008C0886 /* TransactionCell.swift */; };
+		B48AFB232C29F7E2008C0886 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB222C29F7E2008C0886 /* CardView.swift */; };
+		B48AFB252C29FD19008C0886 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB242C29FD19008C0886 /* NumberFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +66,7 @@
 		B47163162C298F450030CE5B /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		B47163182C298F530030CE5B /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		B471631A2C298F710030CE5B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
-		B471631C2C298F980030CE5B /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		B471631C2C298F980030CE5B /* SubNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubNotification.swift; sourceTree = "<group>"; };
 		B471631E2C2992920030CE5B /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		B47163202C2993580030CE5B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		B47163222C2993730030CE5B /* ProfileBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBar.swift; sourceTree = "<group>"; };
@@ -63,6 +77,20 @@
 		B471632D2C29A6690030CE5B /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		B471632F2C29A8150030CE5B /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		B47163312C29B58A0030CE5B /* FormDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDivider.swift; sourceTree = "<group>"; };
+		B47163332C29BF890030CE5B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		B47163352C29C6710030CE5B /* RestorePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordView.swift; sourceTree = "<group>"; };
+		B47163372C29DCFC0030CE5B /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		B471633C2C29E0B30030CE5B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		B471633E2C29E2EA0030CE5B /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
+		B47163402C29E32B0030CE5B /* TanItemModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanItemModifier.swift; sourceTree = "<group>"; };
+		B47163422C29E3D60030CE5B /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
+		B47163452C29E44E0030CE5B /* CreateTransactionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransactionUseCase.swift; sourceTree = "<group>"; };
+		B47163472C29E5EF0030CE5B /* FetchAllTransactionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllTransactionsUseCase.swift; sourceTree = "<group>"; };
+		B47163492C29E63F0030CE5B /* RemoveTransactionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTransactionUseCase.swift; sourceTree = "<group>"; };
+		B471634B2C29E6800030CE5B /* UpdateTransactionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTransactionUseCase.swift; sourceTree = "<group>"; };
+		B48AFB202C29F540008C0886 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		B48AFB222C29F7E2008C0886 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		B48AFB242C29FD19008C0886 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +167,6 @@
 				B47163242C299AC30030CE5B /* Components */,
 				B47162D72C2989B40030CE5B /* ContentView.swift */,
 				B471631E2C2992920030CE5B /* MainTab.swift */,
-				B47163222C2993730030CE5B /* ProfileBar.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -147,6 +174,7 @@
 		B47162F12C298B560030CE5B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				B47163442C29E43C0030CE5B /* Transactions */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -155,11 +183,11 @@
 			isa = PBXGroup;
 			children = (
 				B47162EF2C298B2C0030CE5B /* Root */,
+				B47163392C29E0960030CE5B /* Account */,
 				B47162F32C298B710030CE5B /* Analytics */,
 				B47162F42C298B780030CE5B /* Authentication */,
 				B47162F62C298B840030CE5B /* Database */,
 				B47162F72C298B8A0030CE5B /* Extensions&Modifiers */,
-				B47162F82C298B8F0030CE5B /* Profile */,
 				B47162F92C298B940030CE5B /* Services */,
 				B47162FA2C298B990030CE5B /* Settings */,
 				B47162FB2C298B9F0030CE5B /* Subscriptions */,
@@ -209,15 +237,10 @@
 				B47163292C29A0EF0030CE5B /* CustomInputFieldModifier.swift */,
 				B471632D2C29A6690030CE5B /* Buttons.swift */,
 				B471632F2C29A8150030CE5B /* Gradients.swift */,
+				B47163402C29E32B0030CE5B /* TanItemModifier.swift */,
+				B48AFB242C29FD19008C0886 /* NumberFormatter.swift */,
 			);
 			path = "Extensions&Modifiers";
-			sourceTree = "<group>";
-		};
-		B47162F82C298B8F0030CE5B /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		B47162F92C298B940030CE5B /* Services */ = {
@@ -269,6 +292,9 @@
 			isa = PBXGroup;
 			children = (
 				B47163202C2993580030CE5B /* SignInView.swift */,
+				B47163332C29BF890030CE5B /* SignUpView.swift */,
+				B47163352C29C6710030CE5B /* RestorePasswordView.swift */,
+				B47163372C29DCFC0030CE5B /* AuthenticationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,7 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				B471631A2C298F710030CE5B /* Subscription.swift */,
-				B471631C2C298F980030CE5B /* Notification.swift */,
+				B471631C2C298F980030CE5B /* SubNotification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -337,6 +363,7 @@
 		B47163072C298C130030CE5B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B47163422C29E3D60030CE5B /* TransactionsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -344,6 +371,9 @@
 		B47163082C298C160030CE5B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B471633E2C29E2EA0030CE5B /* TransactionsView.swift */,
+				B48AFB202C29F540008C0886 /* TransactionCell.swift */,
+				B48AFB222C29F7E2008C0886 /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,8 +393,44 @@
 				B47163272C299C7A0030CE5B /* VerticalDivider.swift */,
 				B471632B2C29A2250030CE5B /* CustomInputField.swift */,
 				B47163312C29B58A0030CE5B /* FormDivider.swift */,
+				B47163222C2993730030CE5B /* ProfileBar.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		B47163392C29E0960030CE5B /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				B471633B2C29E0A60030CE5B /* View */,
+				B471633A2C29E0A30030CE5B /* ViewModels */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		B471633A2C29E0A30030CE5B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B471633B2C29E0A60030CE5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B471633C2C29E0B30030CE5B /* AccountView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B47163442C29E43C0030CE5B /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				B47163452C29E44E0030CE5B /* CreateTransactionUseCase.swift */,
+				B47163472C29E5EF0030CE5B /* FetchAllTransactionsUseCase.swift */,
+				B47163492C29E63F0030CE5B /* RemoveTransactionUseCase.swift */,
+				B471634B2C29E6800030CE5B /* UpdateTransactionUseCase.swift */,
+			);
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,25 +513,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				B471630B2C298E4F0030CE5B /* AuthenticationViewModel.swift in Sources */,
+				B47163412C29E32B0030CE5B /* TanItemModifier.swift in Sources */,
 				B47163282C299C7A0030CE5B /* VerticalDivider.swift in Sources */,
 				B471630F2C298EA90030CE5B /* ExpenseTrackerDatabase.swift in Sources */,
 				B47163112C298ECA0030CE5B /* Transaction.swift in Sources */,
+				B47163482C29E5EF0030CE5B /* FetchAllTransactionsUseCase.swift in Sources */,
+				B47163362C29C6710030CE5B /* RestorePasswordView.swift in Sources */,
 				B47162D82C2989B40030CE5B /* ContentView.swift in Sources */,
 				B471632A2C29A0EF0030CE5B /* CustomInputFieldModifier.swift in Sources */,
 				B471631F2C2992920030CE5B /* MainTab.swift in Sources */,
 				B471631B2C298F710030CE5B /* Subscription.swift in Sources */,
+				B471634C2C29E6800030CE5B /* UpdateTransactionUseCase.swift in Sources */,
 				B471632C2C29A2250030CE5B /* CustomInputField.swift in Sources */,
 				B47162D62C2989B40030CE5B /* ETrackerApp.swift in Sources */,
 				B471630D2C298E740030CE5B /* AuthService.swift in Sources */,
 				B47163302C29A8150030CE5B /* Gradients.swift in Sources */,
 				B47163262C299AD40030CE5B /* DateInput.swift in Sources */,
+				B471633F2C29E2EA0030CE5B /* TransactionsView.swift in Sources */,
+				B47163462C29E44E0030CE5B /* CreateTransactionUseCase.swift in Sources */,
+				B47163382C29DCFC0030CE5B /* AuthenticationView.swift in Sources */,
+				B471634A2C29E63F0030CE5B /* RemoveTransactionUseCase.swift in Sources */,
 				B47163322C29B58A0030CE5B /* FormDivider.swift in Sources */,
 				B47163172C298F450030CE5B /* Icon.swift in Sources */,
-				B471631D2C298F980030CE5B /* Notification.swift in Sources */,
+				B48AFB212C29F540008C0886 /* TransactionCell.swift in Sources */,
+				B47163432C29E3D60030CE5B /* TransactionsViewModel.swift in Sources */,
+				B471631D2C298F980030CE5B /* SubNotification.swift in Sources */,
+				B48AFB252C29FD19008C0886 /* NumberFormatter.swift in Sources */,
+				B47163342C29BF890030CE5B /* SignUpView.swift in Sources */,
+				B471633D2C29E0B30030CE5B /* AccountView.swift in Sources */,
 				B47163192C298F530030CE5B /* HexColor.swift in Sources */,
 				B47163152C298F2B0030CE5B /* Category.swift in Sources */,
 				B471632E2C29A6690030CE5B /* Buttons.swift in Sources */,
 				B47163212C2993580030CE5B /* SignInView.swift in Sources */,
+				B48AFB232C29F7E2008C0886 /* CardView.swift in Sources */,
 				B47163232C2993730030CE5B /* ProfileBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
