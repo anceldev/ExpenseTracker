@@ -117,20 +117,71 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
         
     }
     
+    @MainActor
     func insertCategory(newCategory: Transaction.Category) throws {
-        
+        do {
+            container.mainContext.insert(newCategory)
+            try container.mainContext.save()
+        } catch {
+            print("DEBUG - Error: Can't add new category \(error.localizedDescription)")
+            throw DatabaseError.errorInsert
+        }
     }
     
+    @MainActor
     func fetchAllCategories() throws -> [Transaction.Category] {
-        []
+        let fetchDescriptor = FetchDescriptor<Transaction.Category>(sortBy: [SortDescriptor<Transaction.Category>(\.name)])
+        
+        do {
+            let categories = try container.mainContext.fetch(fetchDescriptor)
+            return categories
+        } catch {
+            print("DEBUG - Error: Can't fetch all categories \(error.localizedDescription)")
+            throw DatabaseError.errorFetch
+        }
     }
-    
+    @MainActor
     func updateCategory(id: UUID, name: String, icon: Transaction.Category.Icon, hexColor: String) throws {
+        let categoryPredicate = #Predicate<Transaction.Category> {
+            $0.id == id
+        }
+        var fetchDescriptor = FetchDescriptor<Transaction.Category>(predicate: categoryPredicate)
+        fetchDescriptor.fetchLimit = 1
+        
+        do {
+            guard let updateCategory =  try container.mainContext.fetch(fetchDescriptor).first else {
+                throw DatabaseError.errorUpdate
+            }
+            
+            updateCategory.name = name
+            updateCategory.icon = icon
+            updateCategory.hexColor = hexColor
+            
+            try container.mainContext.save()
+
+        } catch {
+            print("DEBUG - Error: Can't update category \(error.localizedDescription)")
+            throw DatabaseError.errorUpdate
+        }
         
     }
-    
+    @MainActor
     func removeCategory(id: UUID) throws {
+        let categoryPredicate = #Predicate<Transaction.Category> {
+            $0.id == id
+        }
+        var fetchDescriptor = FetchDescriptor<Transaction.Category>(predicate: categoryPredicate)
+        fetchDescriptor.fetchLimit = 1
         
+        do {
+            guard let deleteCategory = try container.mainContext.fetch(fetchDescriptor).first else {
+                throw DatabaseError.errorFetch
+            }
+            container.mainContext.delete(deleteCategory)
+        } catch {
+            print("DEBUG - Error: Can't delete category \(error.localizedDescription)")
+            throw DatabaseError.errorRemove
+        }
     }
     
     func insertSubscription(newSubscription: Subscription) throws {

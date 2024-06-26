@@ -14,9 +14,9 @@ extension Transaction {
     @Model
     class Category: Identifiable {
         @Attribute(.unique) let id: UUID
-        @Attribute(.unique) let name: String
-        let icon: Transaction.Category.Icon
-        let hexColor: String
+        @Attribute(.unique) var name: String
+        var icon: Transaction.Category.Icon
+        var hexColor: String
         
         var color: Color {
             get {

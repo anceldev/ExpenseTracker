@@ -57,6 +57,13 @@
 		B4BDD1EE2C2C0794005934AD /* ImageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1ED2C2C0794005934AD /* ImageInput.swift */; };
 		B4BDD1F02C2C0E18005934AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */; };
 		B4BDD1F22C2C14AC005934AD /* CustomCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */; };
+		B4BDD1F42C2C2B45005934AD /* CategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1F32C2C2B45005934AD /* CategoryPicker.swift */; };
+		B4BDD1F62C2C2E57005934AD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1F52C2C2E57005934AD /* TestView.swift */; };
+		B4BDD1F82C2C389F005934AD /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1F72C2C389F005934AD /* CategoriesViewModel.swift */; };
+		B4BDD1FB2C2C38F1005934AD /* CreateCategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1FA2C2C38F1005934AD /* CreateCategoryUseCase.swift */; };
+		B4BDD1FD2C2C3A3F005934AD /* FetchAllCategoriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1FC2C2C3A3F005934AD /* FetchAllCategoriesUseCase.swift */; };
+		B4BDD1FF2C2C3B3E005934AD /* RemoveCategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1FE2C2C3B3E005934AD /* RemoveCategoryUseCase.swift */; };
+		B4BDD2012C2C3C35005934AD /* UpdateCategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD2002C2C3C35005934AD /* UpdateCategoryUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +116,13 @@
 		B4BDD1ED2C2C0794005934AD /* ImageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInput.swift; sourceTree = "<group>"; };
 		B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCapsule.swift; sourceTree = "<group>"; };
+		B4BDD1F32C2C2B45005934AD /* CategoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPicker.swift; sourceTree = "<group>"; };
+		B4BDD1F52C2C2E57005934AD /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		B4BDD1F72C2C389F005934AD /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		B4BDD1FA2C2C38F1005934AD /* CreateCategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryUseCase.swift; sourceTree = "<group>"; };
+		B4BDD1FC2C2C3A3F005934AD /* FetchAllCategoriesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllCategoriesUseCase.swift; sourceTree = "<group>"; };
+		B4BDD1FE2C2C3B3E005934AD /* RemoveCategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveCategoryUseCase.swift; sourceTree = "<group>"; };
+		B4BDD2002C2C3C35005934AD /* UpdateCategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCategoryUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +199,7 @@
 				B47163242C299AC30030CE5B /* Components */,
 				B47162D72C2989B40030CE5B /* ContentView.swift */,
 				B471631E2C2992920030CE5B /* MainTab.swift */,
+				B4BDD1F52C2C2E57005934AD /* TestView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -192,6 +207,7 @@
 		B47162F12C298B560030CE5B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				B4BDD1F92C2C38E6005934AD /* Categories */,
 				B47163442C29E43C0030CE5B /* Transactions */,
 			);
 			path = UseCases;
@@ -320,6 +336,7 @@
 		B47162FF2C298BE10030CE5B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B4BDD1F72C2C389F005934AD /* CategoriesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -409,18 +426,19 @@
 		B47163242C299AC30030CE5B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B4BDD1F32C2C2B45005934AD /* CategoryPicker.swift */,
+				B45761262C2AEE7D00832CAE /* CloseButton.swift */,
+				B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */,
 				B471632B2C29A2250030CE5B /* CustomInputField.swift */,
+				B45761242C2AE8B500832CAE /* CustomNilDatePicker.swift */,
 				B47163252C299AD40030CE5B /* DateInput.swift */,
 				B47163312C29B58A0030CE5B /* FormDivider.swift */,
+				B4BDD1ED2C2C0794005934AD /* ImageInput.swift */,
+				B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */,
+				B45761222C2AE43B00832CAE /* MoneyInput.swift */,
 				B457611E2C2AE08300832CAE /* PlusButton.swift */,
 				B47163222C2993730030CE5B /* ProfileBar.swift */,
 				B47163272C299C7A0030CE5B /* VerticalDivider.swift */,
-				B45761222C2AE43B00832CAE /* MoneyInput.swift */,
-				B45761242C2AE8B500832CAE /* CustomNilDatePicker.swift */,
-				B45761262C2AEE7D00832CAE /* CloseButton.swift */,
-				B4BDD1ED2C2C0794005934AD /* ImageInput.swift */,
-				B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */,
-				B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -458,6 +476,17 @@
 				B471634B2C29E6800030CE5B /* UpdateTransactionUseCase.swift */,
 			);
 			path = Transactions;
+			sourceTree = "<group>";
+		};
+		B4BDD1F92C2C38E6005934AD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDD1FA2C2C38F1005934AD /* CreateCategoryUseCase.swift */,
+				B4BDD1FC2C2C3A3F005934AD /* FetchAllCategoriesUseCase.swift */,
+				B4BDD1FE2C2C3B3E005934AD /* RemoveCategoryUseCase.swift */,
+				B4BDD2002C2C3C35005934AD /* UpdateCategoryUseCase.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,13 +569,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45761212C2AE14A00832CAE /* TransactionsList.swift in Sources */,
+				B4BDD1FB2C2C38F1005934AD /* CreateCategoryUseCase.swift in Sources */,
 				B471630B2C298E4F0030CE5B /* AuthenticationViewModel.swift in Sources */,
+				B4BDD2012C2C3C35005934AD /* UpdateCategoryUseCase.swift in Sources */,
+				B4BDD1F42C2C2B45005934AD /* CategoryPicker.swift in Sources */,
 				B47163412C29E32B0030CE5B /* TanItemModifier.swift in Sources */,
 				B47163282C299C7A0030CE5B /* VerticalDivider.swift in Sources */,
 				B471630F2C298EA90030CE5B /* ExpenseTrackerDatabase.swift in Sources */,
 				B47163112C298ECA0030CE5B /* Transaction.swift in Sources */,
 				B47163482C29E5EF0030CE5B /* FetchAllTransactionsUseCase.swift in Sources */,
 				B47163362C29C6710030CE5B /* RestorePasswordView.swift in Sources */,
+				B4BDD1F82C2C389F005934AD /* CategoriesViewModel.swift in Sources */,
 				B47162D82C2989B40030CE5B /* ContentView.swift in Sources */,
 				B471632A2C29A0EF0030CE5B /* CustomInputFieldModifier.swift in Sources */,
 				B471631F2C2992920030CE5B /* MainTab.swift in Sources */,
@@ -555,6 +588,7 @@
 				B471634C2C29E6800030CE5B /* UpdateTransactionUseCase.swift in Sources */,
 				B4BDD1EE2C2C0794005934AD /* ImageInput.swift in Sources */,
 				B471632C2C29A2250030CE5B /* CustomInputField.swift in Sources */,
+				B4BDD1FF2C2C3B3E005934AD /* RemoveCategoryUseCase.swift in Sources */,
 				B457611F2C2AE08300832CAE /* PlusButton.swift in Sources */,
 				B47162D62C2989B40030CE5B /* ETrackerApp.swift in Sources */,
 				B471630D2C298E740030CE5B /* AuthService.swift in Sources */,
@@ -573,6 +607,7 @@
 				B47163432C29E3D60030CE5B /* TransactionsViewModel.swift in Sources */,
 				B471631D2C298F980030CE5B /* SubNotification.swift in Sources */,
 				B48AFB252C29FD19008C0886 /* NumberFormatter.swift in Sources */,
+				B4BDD1FD2C2C3A3F005934AD /* FetchAllCategoriesUseCase.swift in Sources */,
 				B47163342C29BF890030CE5B /* SignUpView.swift in Sources */,
 				B471633D2C29E0B30030CE5B /* AccountView.swift in Sources */,
 				B47163192C298F530030CE5B /* HexColor.swift in Sources */,
@@ -580,6 +615,7 @@
 				B471632E2C29A6690030CE5B /* Buttons.swift in Sources */,
 				B47163212C2993580030CE5B /* SignInView.swift in Sources */,
 				B48AFB232C29F7E2008C0886 /* CardView.swift in Sources */,
+				B4BDD1F62C2C2E57005934AD /* TestView.swift in Sources */,
 				B45761232C2AE43B00832CAE /* MoneyInput.swift in Sources */,
 				B4BDD1F22C2C14AC005934AD /* CustomCapsule.swift in Sources */,
 				B47163232C2993730030CE5B /* ProfileBar.swift in Sources */,

@@ -43,7 +43,7 @@ struct AddTransaction: View {
     
     init(viewModel: TransactionsViewModel) {
         self.viewModel = viewModel
-        UISegmentedControl.appearance().selectedSegmentTintColor = .purple400
+        UISegmentedControl.appearance().selectedSegmentTintColor = .purple600
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor:UIColor.white], for: .selected)
     }
     
@@ -62,7 +62,7 @@ struct AddTransaction: View {
                     .pickerStyle(.segmented)
                 }
             }
-            VStack(spacing: 16) {
+            VStack(spacing: 12) {
                 CustomInputField(title: "Concept", text: concept, imageName: "cheapdollar", autoCorrectionDisabled: false) {
                     TextField("Concept", text: $concept)
                 }
@@ -73,8 +73,19 @@ struct AddTransaction: View {
                 ImageInput(receiptEnum: $receiptEnum, receiptPicker: $selectedSheet)
             }
             Spacer()
-            Button("Back") {
+            VStack {
+                Button(action: {
+//                    viewModel.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: category, timestamp: timestamp, receipt: receiptEnum == nil ? nil : imageReceipt)
+                }, label: {
+                    Text("Add Transaction")
+                })
+                .buttonStyle(.mainButton(purpleButton, stroke: .purple700, shadow: .purple400))
+            Button(action: {
                 dismiss()
+            }, label: {
+                Text("Cancel")
+            })
+            .buttonStyle(.mainButton)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

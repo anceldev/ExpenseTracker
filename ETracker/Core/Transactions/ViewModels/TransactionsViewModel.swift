@@ -7,6 +7,7 @@
 
 import Foundation
 import Observation
+import SwiftUI
 
 protocol TransactionsViewModelProtocol {
     var transactions: [Transaction] { get set }
@@ -50,9 +51,12 @@ public class TransactionsViewModel: TransactionsViewModelProtocol {
     }
     
     
-    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) {
+//    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) {
+    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: UIImage?) {
         do {
-            try createTransactionUseCase.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: category, timestamp: timestamp, receipt: receipt)
+            let receiptData: Data? = receipt?.jpegData(compressionQuality: 0.2) ?? nil
+//            try createTransactionUseCase.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: category, timestamp: timestamp, receipt: receipt)
+            try createTransactionUseCase.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: category, timestamp: timestamp, receipt: receiptData)
             fetchTransactions()
         } catch {
             print("DEBUG - Error: Can't create transaction: \(error.localizedDescription)")

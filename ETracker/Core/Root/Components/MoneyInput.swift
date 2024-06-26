@@ -31,7 +31,7 @@ struct MoneyInput<InputField: View>: View where InputField: View {
                 VerticalDivider()
                 Text("$")
                     .font(.system(size: 28, weight: .bold, design: .rounded))
-                    .foregroundStyle(.gray1K2)
+                    .foregroundStyle(amount != 0.0 ? .purple400 : .gray1K2)
                 Spacer()
             }
             .customInputField(.infinity)

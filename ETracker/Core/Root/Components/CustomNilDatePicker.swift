@@ -156,6 +156,8 @@ struct CustomNilDatePicker: View {
                 }
             }
         }
+        .padding(.vertical, 9)
+        .frame(height: 30, alignment: .center)
     }
     
     @ViewBuilder
