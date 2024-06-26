@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ImageInput: View {
     
-    @Binding var hasReceipt: Bool
+//    @Binding var hasReceipt: Bool
+    @Binding var receiptEnum: ReceiptEnum?
     @Binding var receiptPicker: SheetEnum?
     
     @State var showReceiptButtons: Bool = true
@@ -31,19 +32,19 @@ struct ImageInput: View {
                                         Image("receipt")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
-                                            .foregroundStyle(hasReceipt ? .purple400 : .gray900).animation(.easeIn, value: hasReceipt)
+                                            .foregroundStyle(receiptEnum != nil ? .purple400 : .gray900).animation(.easeIn, value: receiptEnum)
                                     }
                                     .frame(width: 26, height: 26, alignment: .center)
                                     Spacer()
                                     VerticalDivider()
                                     Spacer()
-                                    Button(hasReceipt ? "Delete" : "Add") {
-                                        if !hasReceipt {
+                                    Button(receiptEnum != nil ? "Delete" : "Add") {
+                                        if receiptEnum == nil {
                                             withAnimation(.smooth) {
                                                 showReceiptButtons.toggle()
                                             }
                                         } else {
-                                            hasReceipt = false
+                                            receiptEnum = nil
                                             showReceiptButtons = false
                                         }
                                     }
@@ -64,7 +65,7 @@ struct ImageInput: View {
                                                 Image("picture")
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
-                                                    .foregroundStyle(hasReceipt ? .purple400 : .gray900)
+                                                    .foregroundStyle(receiptEnum == .image ? .purple400 : .gray900)
                                             })
                                         }
                                         .frame(width: 26, height: 26)
@@ -78,7 +79,7 @@ struct ImageInput: View {
                                                 Image("camera")
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
-                                                    .foregroundStyle(hasReceipt ? .purple400 : .gray900)
+                                                    .foregroundStyle(receiptEnum == .photo ? .purple400 : .gray900)
                                             })
                                         }
                                         .frame(width: 26, height: 26)
@@ -96,5 +97,10 @@ struct ImageInput: View {
 }
 
 #Preview {
-    ImageInput(hasReceipt: .constant(false), receiptPicker: .constant(.camera))
+//    ImageInput(hasReceipt: .constant(false), receiptPicker: .constant(.camera))
+    VStack {
+        ImageInput(receiptEnum: .constant(nil), receiptPicker: .constant(nil), showReceiptButtons: false)
+        ImageInput(receiptEnum: .constant(.photo), receiptPicker: .constant(nil), showReceiptButtons: true)
+        ImageInput(receiptEnum: .constant(.image), receiptPicker: .constant(nil), showReceiptButtons: true)
+    }
 }

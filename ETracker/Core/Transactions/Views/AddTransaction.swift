@@ -14,7 +14,7 @@ enum SheetEnum: Identifiable, Hashable {
     
     var id: Self { self }
 }
-enum Receipt: Identifiable, Hashable {
+enum ReceiptEnum: Identifiable, Hashable {
     case photo
     case image
     
@@ -38,7 +38,7 @@ struct AddTransaction: View {
     @State var showReceiptPicker: Bool = false
     
     @State var imageReceipt = UIImage()
-    @State var hasReceipt = false
+    @State var receiptEnum: ReceiptEnum? = nil
     
     
     init(viewModel: TransactionsViewModel) {
@@ -69,9 +69,8 @@ struct AddTransaction: View {
                 MoneyInput(title: "Amount", amount: amount) {
                     TextField("", value: $amount, formatter: NumberFormatter())
                 }
-//                DateInput(showPicker: $showDatePicker, timestamp: timestamp)
                 DateInput(showPicker: $selectedSheet, timestamp: timestamp)
-                ImageInput(hasReceipt: $hasReceipt, receiptPicker: $selectedSheet)
+                ImageInput(receiptEnum: $receiptEnum, receiptPicker: $selectedSheet)
             }
             Spacer()
             Button("Back") {
@@ -83,9 +82,9 @@ struct AddTransaction: View {
         .sheet(item: $selectedSheet) { sheet in
             switch sheet {
             case .library:
-                ImagePicker(sourceType: .photoLibrary, selectedImage: $imageReceipt, imagePicked: $hasReceipt)
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $imageReceipt, receiptEnum: $receiptEnum)
             case .camera:
-                ImagePicker(sourceType: .camera, selectedImage: $imageReceipt, imagePicked: $hasReceipt)
+                ImagePicker(sourceType: .camera, selectedImage: $imageReceipt, receiptEnum: $receiptEnum)
             case .datePicker:
                 CustomNilDatePicker(title: "Transaction Date", pickedDate: $timestamp)
             }

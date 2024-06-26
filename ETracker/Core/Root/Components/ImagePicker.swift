@@ -14,7 +14,8 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage
     
     //
-    @Binding var imagePicked: Bool
+//    @Binding var imagePicked: Bool
+    @Binding var receiptEnum: ReceiptEnum?
     //
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
@@ -40,7 +41,17 @@ struct ImagePicker: UIViewControllerRepresentable {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
                 //
-                parent.imagePicked = true
+//                parent.imagePicked = true
+                switch parent.sourceType {
+                case .camera:
+                    parent.receiptEnum = .photo
+                case .photoLibrary:
+                    parent.receiptEnum = .image
+                case .savedPhotosAlbum:
+                    return
+                @unknown default:
+                    return
+                }
                 //
             }
             parent.presentationMode.wrappedValue.dismiss()
