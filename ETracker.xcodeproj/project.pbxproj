@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B457611D2C2ADEEA00832CAE /* AddTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457611C2C2ADEEA00832CAE /* AddTransaction.swift */; };
+		B457611F2C2AE08300832CAE /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457611E2C2AE08300832CAE /* PlusButton.swift */; };
+		B45761212C2AE14A00832CAE /* TransactionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45761202C2AE14A00832CAE /* TransactionsList.swift */; };
+		B45761232C2AE43B00832CAE /* MoneyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45761222C2AE43B00832CAE /* MoneyInput.swift */; };
+		B45761252C2AE8B500832CAE /* CustomNilDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45761242C2AE8B500832CAE /* CustomNilDatePicker.swift */; };
+		B45761272C2AEE7D00832CAE /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45761262C2AEE7D00832CAE /* CloseButton.swift */; };
 		B47162D62C2989B40030CE5B /* ETrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47162D52C2989B40030CE5B /* ETrackerApp.swift */; };
 		B47162D82C2989B40030CE5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47162D72C2989B40030CE5B /* ContentView.swift */; };
 		B47162DA2C2989B50030CE5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B47162D92C2989B50030CE5B /* Assets.xcassets */; };
@@ -48,9 +54,18 @@
 		B48AFB212C29F540008C0886 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB202C29F540008C0886 /* TransactionCell.swift */; };
 		B48AFB232C29F7E2008C0886 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB222C29F7E2008C0886 /* CardView.swift */; };
 		B48AFB252C29FD19008C0886 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB242C29FD19008C0886 /* NumberFormatter.swift */; };
+		B4BDD1EE2C2C0794005934AD /* ImageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1ED2C2C0794005934AD /* ImageInput.swift */; };
+		B4BDD1F02C2C0E18005934AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */; };
+		B4BDD1F22C2C14AC005934AD /* CustomCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B457611C2C2ADEEA00832CAE /* AddTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransaction.swift; sourceTree = "<group>"; };
+		B457611E2C2AE08300832CAE /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		B45761202C2AE14A00832CAE /* TransactionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsList.swift; sourceTree = "<group>"; };
+		B45761222C2AE43B00832CAE /* MoneyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInput.swift; sourceTree = "<group>"; };
+		B45761242C2AE8B500832CAE /* CustomNilDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNilDatePicker.swift; sourceTree = "<group>"; };
+		B45761262C2AEE7D00832CAE /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		B47162D22C2989B40030CE5B /* ETracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ETracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47162D52C2989B40030CE5B /* ETrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETrackerApp.swift; sourceTree = "<group>"; };
 		B47162D72C2989B40030CE5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +106,9 @@
 		B48AFB202C29F540008C0886 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		B48AFB222C29F7E2008C0886 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B48AFB242C29FD19008C0886 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		B4BDD1ED2C2C0794005934AD /* ImageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInput.swift; sourceTree = "<group>"; };
+		B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCapsule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +204,7 @@
 				B47163392C29E0960030CE5B /* Account */,
 				B47162F32C298B710030CE5B /* Analytics */,
 				B47162F42C298B780030CE5B /* Authentication */,
+				B47162F52C298B7E0030CE5B /* Categories */,
 				B47162F62C298B840030CE5B /* Database */,
 				B47162F72C298B8A0030CE5B /* Extensions&Modifiers */,
 				B47162F92C298B940030CE5B /* Services */,
@@ -283,7 +302,6 @@
 			isa = PBXGroup;
 			children = (
 				B471630A2C298E4F0030CE5B /* AuthenticationViewModel.swift */,
-				B47162F52C298B7E0030CE5B /* Categories */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -374,6 +392,8 @@
 				B471633E2C29E2EA0030CE5B /* TransactionsView.swift */,
 				B48AFB202C29F540008C0886 /* TransactionCell.swift */,
 				B48AFB222C29F7E2008C0886 /* CardView.swift */,
+				B457611C2C2ADEEA00832CAE /* AddTransaction.swift */,
+				B45761202C2AE14A00832CAE /* TransactionsList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -389,11 +409,18 @@
 		B47163242C299AC30030CE5B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B47163252C299AD40030CE5B /* DateInput.swift */,
-				B47163272C299C7A0030CE5B /* VerticalDivider.swift */,
 				B471632B2C29A2250030CE5B /* CustomInputField.swift */,
+				B47163252C299AD40030CE5B /* DateInput.swift */,
 				B47163312C29B58A0030CE5B /* FormDivider.swift */,
+				B457611E2C2AE08300832CAE /* PlusButton.swift */,
 				B47163222C2993730030CE5B /* ProfileBar.swift */,
+				B47163272C299C7A0030CE5B /* VerticalDivider.swift */,
+				B45761222C2AE43B00832CAE /* MoneyInput.swift */,
+				B45761242C2AE8B500832CAE /* CustomNilDatePicker.swift */,
+				B45761262C2AEE7D00832CAE /* CloseButton.swift */,
+				B4BDD1ED2C2C0794005934AD /* ImageInput.swift */,
+				B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */,
+				B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -512,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B45761212C2AE14A00832CAE /* TransactionsList.swift in Sources */,
 				B471630B2C298E4F0030CE5B /* AuthenticationViewModel.swift in Sources */,
 				B47163412C29E32B0030CE5B /* TanItemModifier.swift in Sources */,
 				B47163282C299C7A0030CE5B /* VerticalDivider.swift in Sources */,
@@ -522,20 +550,26 @@
 				B47162D82C2989B40030CE5B /* ContentView.swift in Sources */,
 				B471632A2C29A0EF0030CE5B /* CustomInputFieldModifier.swift in Sources */,
 				B471631F2C2992920030CE5B /* MainTab.swift in Sources */,
+				B457611D2C2ADEEA00832CAE /* AddTransaction.swift in Sources */,
 				B471631B2C298F710030CE5B /* Subscription.swift in Sources */,
 				B471634C2C29E6800030CE5B /* UpdateTransactionUseCase.swift in Sources */,
+				B4BDD1EE2C2C0794005934AD /* ImageInput.swift in Sources */,
 				B471632C2C29A2250030CE5B /* CustomInputField.swift in Sources */,
+				B457611F2C2AE08300832CAE /* PlusButton.swift in Sources */,
 				B47162D62C2989B40030CE5B /* ETrackerApp.swift in Sources */,
 				B471630D2C298E740030CE5B /* AuthService.swift in Sources */,
 				B47163302C29A8150030CE5B /* Gradients.swift in Sources */,
 				B47163262C299AD40030CE5B /* DateInput.swift in Sources */,
 				B471633F2C29E2EA0030CE5B /* TransactionsView.swift in Sources */,
 				B47163462C29E44E0030CE5B /* CreateTransactionUseCase.swift in Sources */,
+				B45761252C2AE8B500832CAE /* CustomNilDatePicker.swift in Sources */,
+				B45761272C2AEE7D00832CAE /* CloseButton.swift in Sources */,
 				B47163382C29DCFC0030CE5B /* AuthenticationView.swift in Sources */,
 				B471634A2C29E63F0030CE5B /* RemoveTransactionUseCase.swift in Sources */,
 				B47163322C29B58A0030CE5B /* FormDivider.swift in Sources */,
 				B47163172C298F450030CE5B /* Icon.swift in Sources */,
 				B48AFB212C29F540008C0886 /* TransactionCell.swift in Sources */,
+				B4BDD1F02C2C0E18005934AD /* ImagePicker.swift in Sources */,
 				B47163432C29E3D60030CE5B /* TransactionsViewModel.swift in Sources */,
 				B471631D2C298F980030CE5B /* SubNotification.swift in Sources */,
 				B48AFB252C29FD19008C0886 /* NumberFormatter.swift in Sources */,
@@ -546,6 +580,8 @@
 				B471632E2C29A6690030CE5B /* Buttons.swift in Sources */,
 				B47163212C2993580030CE5B /* SignInView.swift in Sources */,
 				B48AFB232C29F7E2008C0886 /* CardView.swift in Sources */,
+				B45761232C2AE43B00832CAE /* MoneyInput.swift in Sources */,
+				B4BDD1F22C2C14AC005934AD /* CustomCapsule.swift in Sources */,
 				B47163232C2993730030CE5B /* ProfileBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

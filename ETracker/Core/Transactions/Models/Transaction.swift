@@ -42,5 +42,4 @@ extension Transaction {
         case income = "+"
         case expense = "-"
     }
-    
 }
