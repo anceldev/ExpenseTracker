@@ -406,11 +406,11 @@
 		B47163082C298C160030CE5B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B471633E2C29E2EA0030CE5B /* TransactionsView.swift */,
-				B48AFB202C29F540008C0886 /* TransactionCell.swift */,
-				B48AFB222C29F7E2008C0886 /* CardView.swift */,
 				B457611C2C2ADEEA00832CAE /* AddTransaction.swift */,
+				B48AFB222C29F7E2008C0886 /* CardView.swift */,
+				B48AFB202C29F540008C0886 /* TransactionCell.swift */,
 				B45761202C2AE14A00832CAE /* TransactionsList.swift */,
+				B471633E2C29E2EA0030CE5B /* TransactionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

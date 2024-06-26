@@ -10,11 +10,10 @@ import SwiftUI
 struct CategoryPicker: View {
     /// Customization Properties
     var hint: String
-    
-    
     var options: [String]
-    
     var anchor: Anchor = .bottom
+
+    var viewModel: CategoriesViewModel
     
     @Binding var selection: String?
     /// View Properties
@@ -147,20 +146,29 @@ struct CategoryPicker: View {
     }
 }
 
-
-#Preview {
-    NavigationStack {
-        TestView()
-            .padding()
-    }
-}
+//
+//#Preview {
+//    NavigationStack {
+//        TestView()
+//            .padding()
+//    }
+//}
 #Preview(body: {
+//    CategoryPicker(hint: "Picker", options: [
+//        "YouTube",
+//        "Instagram",
+//        "X (Twitter)",
+//        "Snapchat",
+//        "TikTok"
+//    ],anchor: .bottom,viewModel: CategoriesViewModel(), selection: .constant("Nice"))
+//    .padding()
     CategoryPicker(hint: "Picker", options: [
         "YouTube",
         "Instagram",
         "X (Twitter)",
         "Snapchat",
         "TikTok"
-    ],anchor: .bottom, selection: .constant("Nice"))
+    ],anchor: .bottom, viewModel: CategoriesViewModel(), selection: .constant("Nice"))
     .padding()
+
 })

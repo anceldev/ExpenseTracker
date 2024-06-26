@@ -25,7 +25,7 @@ public class CategoriesViewModel: CategoriesViewModelProtocol {
     private var removeCategoryUseCase: RemoveCategoryProtocol
     
     init(
-        categories: [Transaction.Category],
+        categories: [Transaction.Category] = [],
         createCategoryUseCase: CreateCategoryProtocol = CreateCategoryUseCase(),
         fetchCategoriesUseCase: FetchAllCategoriesProtocol = FetchAllCategoriesUseCase(),
         updateCategoryUseCase: UpdateCategoryProtocol = UpdateCategoryUseCase(),

@@ -26,6 +26,8 @@ struct AddTransaction: View {
     @Environment(\.dismiss) private var dismiss
     
     var viewModel: TransactionsViewModel
+    var categoriesViewModel = CategoriesViewModel()
+    
     @State var transactionKind: Transaction.Kind = .income
     @State var amount: Double = 0.0
     @State var concept: String = ""
