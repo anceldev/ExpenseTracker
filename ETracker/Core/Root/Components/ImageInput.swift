@@ -93,6 +93,7 @@ struct ImageInput: View {
                 }
             }
         }
+        .frame(maxHeight: .infinity)
     }
 }
 
@@ -100,7 +101,6 @@ struct ImageInput: View {
 //    ImageInput(hasReceipt: .constant(false), receiptPicker: .constant(.camera))
     VStack {
         ImageInput(receiptEnum: .constant(nil), receiptPicker: .constant(nil), showReceiptButtons: false)
-        ImageInput(receiptEnum: .constant(.photo), receiptPicker: .constant(nil), showReceiptButtons: true)
-        ImageInput(receiptEnum: .constant(.image), receiptPicker: .constant(nil), showReceiptButtons: true)
+        Spacer()
     }
 }

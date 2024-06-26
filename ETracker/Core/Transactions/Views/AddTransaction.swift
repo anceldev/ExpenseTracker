@@ -33,6 +33,8 @@ struct AddTransaction: View {
     @State var concept: String = ""
     @State var timestamp: Date? = nil
     
+    @State var selectedCategory: Transaction.Category? = nil
+    
     @State var showDatePicker = false
     @State var showReceiptButtons = false
     
@@ -64,25 +66,34 @@ struct AddTransaction: View {
                     .pickerStyle(.segmented)
                 }
             }
-            VStack(spacing: 12) {
-                CustomInputField(title: "Concept", text: concept, imageName: "cheapdollar", autoCorrectionDisabled: false) {
-                    TextField("Concept", text: $concept)
+            ScrollView(.vertical) {
+                VStack(spacing: 12) {
+                    CustomInputField(title: "Concept", text: concept, imageName: "cheapdollar", autoCorrectionDisabled: false) {
+                        TextField("Concept", text: $concept)
+                    }
+                    MoneyInput(title: "Amount", amount: amount) {
+                        TextField("", value: $amount, formatter: NumberFormatter())
+                    }
+                    DateInput(showPicker: $selectedSheet, timestamp: timestamp)
+                    ImageInput(receiptEnum: $receiptEnum, receiptPicker: $selectedSheet)
+                        .frame(minHeight: 92)
+                    CategoryPicker(hint: "Select", anchor: .top, viewModel: categoriesViewModel, selectedCategory: $selectedCategory)
+                
                 }
-                MoneyInput(title: "Amount", amount: amount) {
-                    TextField("", value: $amount, formatter: NumberFormatter())
-                }
-                DateInput(showPicker: $selectedSheet, timestamp: timestamp)
-                ImageInput(receiptEnum: $receiptEnum, receiptPicker: $selectedSheet)
             }
-            Spacer()
+//            Spacer()
             VStack {
                 Button(action: {
+                    print("Adding category...")
 //                    viewModel.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: category, timestamp: timestamp, receipt: receiptEnum == nil ? nil : imageReceipt)
                 }, label: {
                     Text("Add Transaction")
                 })
                 .buttonStyle(.mainButton(purpleButton, stroke: .purple700, shadow: .purple400))
+                .disabled(selectedCategory == nil)
+                
             Button(action: {
+                print("Canceling new transaction")
                 dismiss()
             }, label: {
                 Text("Cancel")
@@ -110,5 +121,7 @@ struct MyDetent: CustomPresentationDetent {
     }
 }
 #Preview {
-    AddTransaction(viewModel: TransactionsViewModel())
+    NavigationStack {
+        AddTransaction(viewModel: TransactionsViewModel())
+    }
 }
