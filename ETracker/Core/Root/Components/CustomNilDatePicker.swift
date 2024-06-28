@@ -11,21 +11,23 @@ struct CustomNilDatePicker: View {
     @State var currentDate: Date
     @State var currentMonth: Int
     @State var newDate: Date
-    @Binding var pickedDate: Date?
+    
+    
+//    @Binding var pickedDate: Date?
+    @Binding var pickedDate: Date
     var title: String?
     
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    
-    var datePicked: Bool {
-        if pickedDate == nil {
-            return false
-        }
-        return true
-    }
+//    var datePicked: Bool {
+//        if pickedDate == nil {
+//            return false
+//        }
+//        return true
+//    }
     
     @Environment(\.dismiss) var dismiss
     
-    init(title: String? = nil, pickedDate: Binding<Date?>) {
+    init(title: String? = nil, pickedDate: Binding<Date>) {
         self._currentDate = State(initialValue: .now)
         self._currentMonth = State(initialValue: 0)
         self._newDate = State(initialValue: .now)
@@ -104,10 +106,13 @@ struct CustomNilDatePicker: View {
                 }
             })
             Button(action: {
-                newDate = currentDate
+//                newDate = currentDate
+//                withAnimation(.spring) {
+//                    pickedDate = newDate
+//                    currentDate = pickedDate!
+//                }
                 withAnimation(.spring) {
-                    pickedDate = newDate
-                    currentDate = pickedDate!
+                    pickedDate = currentDate
                 }
             }, label: {
                 Text("Save")
@@ -115,7 +120,8 @@ struct CustomNilDatePicker: View {
             .buttonStyle(.mainButton(purpleButton, stroke: .purple700, shadow: .purple400))
             Button(action: {
                 withAnimation(.spring) {
-                    pickedDate = nil
+                    currentDate = .now
+                    pickedDate = currentDate
                     print("Picked date is now = nil \(String(describing: pickedDate))")
                 }
             }, label: {
@@ -133,7 +139,7 @@ struct CustomNilDatePicker: View {
     private func CardDateView(value: DateValue) -> some View {
         VStack {
             if value.day != -1 {
-                if datePicked && isSameDay(date1: pickedDate!, date2: value.date) {
+                if isSameDay(date1: pickedDate, date2: value.date) {
                     Text("\(value.day)")
                         .font(.headline)
                         .foregroundStyle(.white)
@@ -223,9 +229,9 @@ extension Date {
 
 
 #Preview(traits: .sizeThatFitsLayout, body: {
-    @State var pickedDate: Date? = .now
+    @State var pickedDate: Date = .now
     return  VStack {
         CustomNilDatePicker(title: "Title", pickedDate: $pickedDate)
-        Text(pickedDate ?? .now, style: .date)
+        Text(pickedDate, style: .date)
     }
 })

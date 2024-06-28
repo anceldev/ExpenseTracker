@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CreateTransactionProtocol {
-    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) throws
+    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: Data?) throws
 }
 
 struct CreateTransactionUseCase: CreateTransactionProtocol {
@@ -18,7 +18,7 @@ struct CreateTransactionUseCase: CreateTransactionProtocol {
         self.database = database
     }
     
-    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) throws {
+    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: Data?) throws {
         let newTransaction: Transaction = .init(
             concept: concept,
             amount: amount,

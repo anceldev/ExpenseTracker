@@ -14,7 +14,7 @@ struct ImageInput: View {
     @Binding var receiptEnum: ReceiptEnum?
     @Binding var receiptPicker: SheetEnum?
     
-    @State var showReceiptButtons: Bool = true
+    @State var showReceiptButtons: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {

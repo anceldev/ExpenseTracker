@@ -31,12 +31,14 @@ struct AddTransaction: View {
     @State var transactionKind: Transaction.Kind = .income
     @State var amount: Double = 0.0
     @State var concept: String = ""
-    @State var timestamp: Date? = nil
+//    @State var timestamp: Date? = nil
+        @State var timestamp: Date = .now
+    
     
     @State var selectedCategory: Transaction.Category? = nil
     
     @State var showDatePicker = false
-    @State var showReceiptButtons = false
+//    @State var showReceiptButtons = false
     
     @State var selectedSheet: SheetEnum?
     @State var showReceiptPicker: Bool = false
@@ -85,7 +87,8 @@ struct AddTransaction: View {
             VStack {
                 Button(action: {
                     print("Adding category...")
-//                    viewModel.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: category, timestamp: timestamp, receipt: receiptEnum == nil ? nil : imageReceipt)
+                    viewModel.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: selectedCategory!, timestamp: timestamp, receipt: receiptEnum == nil ? nil : imageReceipt)
+                    dismiss()
                 }, label: {
                     Text("Add Transaction")
                 })

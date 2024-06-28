@@ -23,13 +23,15 @@ struct TransactionsView: View {
                 }
                 .position(x: CGFloat(geo.size.width  - 60.0), y: CGFloat(geo.size.height - 60.0))
             }
+            .zIndex(100)
             VStack {
                 CardView(balance: 800, income: 950, expense: 150)
                 Spacer()
-                TransactionsList()
+                TransactionsList(viewModel: viewModel)
             }
             .padding()
         }
+        .background(.gray100)
     }
 }
 

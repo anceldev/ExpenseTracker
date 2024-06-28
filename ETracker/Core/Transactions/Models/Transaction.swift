@@ -11,11 +11,11 @@ import SwiftData
 @Model
 public class Transaction: Identifiable {
     @Attribute(.unique) public let id: UUID
-    let concept: String
-    let amount: Double
-    let transactionKind: Transaction.Kind
-    let category: Transaction.Category
-    let timestamp: Date
+    var concept: String
+    var amount: Double
+    var transactionKind: Transaction.Kind
+    var category: Transaction.Category
+    var timestamp: Date
     @Attribute(.externalStorage) var receipt: Data?
     
     init(
@@ -24,7 +24,7 @@ public class Transaction: Identifiable {
         amount: Double = 0.00,
         transactionKind: Transaction.Kind = .income,
         category: Category,
-        timestamp: Date? = .now,
+        timestamp: Date = .now,
         receipt: Data? = nil
     ) {
         self.id = id
@@ -32,7 +32,7 @@ public class Transaction: Identifiable {
         self.amount = amount
         self.transactionKind = transactionKind
         self.category = category
-        self.timestamp = timestamp!
+        self.timestamp = timestamp
         self.receipt = receipt
     }
 }

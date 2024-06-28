@@ -8,7 +8,7 @@
 import Foundation
 
 protocol UpdateTransactionProtocol {
-    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) throws
+    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: Data?) throws
 }
 
 struct UpdateTransactionUseCase: UpdateTransactionProtocol {
@@ -18,7 +18,7 @@ struct UpdateTransactionUseCase: UpdateTransactionProtocol {
         self.database = database
     }
     
-    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) throws {
+    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: Data?) throws {
         try database.updateTransaction(
             id: id, 
             concept: concept,

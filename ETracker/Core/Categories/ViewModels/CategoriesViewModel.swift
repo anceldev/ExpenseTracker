@@ -42,6 +42,7 @@ public class CategoriesViewModel: CategoriesViewModelProtocol {
     func createCategory(name: String, icon: Transaction.Category.Icon, hexColor: String) {
         do {
             try createCategoryUseCase.createCategory(name: name, icon: icon, hexColor: hexColor)
+            fetchAllCategories()
         } catch {
             print("DEBUG - Error: Error creating category with use case \(error.localizedDescription)")
         }

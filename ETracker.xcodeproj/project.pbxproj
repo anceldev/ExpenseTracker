@@ -179,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				B47162D52C2989B40030CE5B /* ETrackerApp.swift */,
+				B47162D72C2989B40030CE5B /* ContentView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -197,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				B47163242C299AC30030CE5B /* Components */,
-				B47162D72C2989B40030CE5B /* ContentView.swift */,
 				B471631E2C2992920030CE5B /* MainTab.swift */,
 				B4BDD1F52C2C2E57005934AD /* TestView.swift */,
 			);

@@ -19,7 +19,7 @@ enum DatabaseError: Error {
 protocol ExpenseTrackerDatabaseProtocol {
     func insertTransaction(newTransaction: Transaction) throws
     func fetchAllTransactions() throws -> [Transaction]
-    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) throws
+    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: Data?) throws
     func removeTransaction(id: UUID) throws
     
     func insertCategory(newCategory: Transaction.Category) throws
@@ -100,17 +100,51 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
             fatalError("Database cannot be created")
         }
     }
-    
+    @MainActor
     func insertTransaction(newTransaction: Transaction) throws {
-        //
+        do {
+            container.mainContext.insert(newTransaction)
+            try container.mainContext.save()
+        } catch {
+            print("DEBUG - Error: Can't add new transaction \(error.localizedDescription)")
+            throw DatabaseError.errorInsert
+        }
     }
-    
+    @MainActor
     func fetchAllTransactions() throws -> [Transaction] {
-        []
+        let fetchDescriptor = FetchDescriptor<Transaction>(sortBy: [SortDescriptor<Transaction>(\.timestamp)])
+        do {
+            let transactions = try container.mainContext.fetch(fetchDescriptor)
+            return transactions
+        } catch {
+            print("DEBUG - Error: Can't fetch all transactions \(error.localizedDescription)")
+            throw DatabaseError.errorFetch
+        }
     }
-    
-    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) throws {
+    @MainActor
+    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: Data?) throws {
+        let transactionPredicate = #Predicate<Transaction> {
+            $0.id == id
+        }
+        var fetchDescriptor = FetchDescriptor<Transaction>(predicate: transactionPredicate)
+        fetchDescriptor.fetchLimit = 1
         
+        do {
+            guard let updateTransaction = try container.mainContext.fetch(fetchDescriptor).first else {
+                throw DatabaseError.errorUpdate
+            }
+            updateTransaction.concept = concept
+            updateTransaction.amount = amount
+            updateTransaction.transactionKind = transactionKind
+            updateTransaction.category = category
+            updateTransaction.timestamp = timestamp
+            updateTransaction.receipt = receipt
+            
+            try container.mainContext.save()
+        } catch {
+            print("DEBUG - Error: Can't update transaction \(error.localizedDescription)")
+            throw DatabaseError.errorUpdate
+        }
     }
     
     func removeTransaction(id: UUID) throws {

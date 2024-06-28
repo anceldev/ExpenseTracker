@@ -52,7 +52,7 @@ public class TransactionsViewModel: TransactionsViewModelProtocol {
     
     
 //    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) {
-    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: UIImage?) {
+    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: UIImage?) {
         do {
             let receiptData: Data? = receipt?.jpegData(compressionQuality: 0.2) ?? nil
 //            try createTransactionUseCase.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: category, timestamp: timestamp, receipt: receipt)
@@ -63,7 +63,7 @@ public class TransactionsViewModel: TransactionsViewModelProtocol {
         }
     }
     
-    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date?, receipt: Data?) {
+    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: Data?) {
         do {
             try updateTransactionUseCase.updateTransaction(id: id, concept: concept, amount: amount, transactionKind: transactionKind, category: category, timestamp: timestamp, receipt: receipt)
         } catch {

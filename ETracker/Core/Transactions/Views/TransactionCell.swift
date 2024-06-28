@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TransactionCell: View {
-    let icon: String
-    let categoryName: String
     let concept: String
     let amount: Double
+    let categoryName: String
+    let icon: String
     let action: () -> Void
     var body: some View {
         HStack(spacing: 14) {
@@ -40,9 +40,10 @@ struct TransactionCell: View {
             Button(action: action, label: {
                 Image(systemName: "ellipsis")
                     .rotationEffect(.degrees(90))
+                    .foregroundStyle(.gray1K3)
             })
         }
-        .padding(14)
+        .padding(.horizontal, 14)
         .frame(maxWidth: .infinity)
         .frame(height: 68)
         .background(.white)
@@ -53,14 +54,18 @@ struct TransactionCell: View {
         }
     }
 }
-
 #Preview {
-    VStack {
-        TransactionCell(icon: "gas", categoryName: "Gas", concept: "Mazda 13", amount: 54.98) {
-            print("Tapped")
-        }
-    }
-    .padding()
-    .background(.red.opacity(0.3))
-        
+    TransactionsList(viewModel: TransactionsViewModel())
+        .padding()
 }
+//
+//#Preview {
+//    VStack {
+//        TransactionCell(concept: "Mazda 13", amount: 54.98, categoryName: "Gas", icon: "gas"){
+//            print("Tapped")
+//        }
+//    }
+//    .padding()
+//    .background(.red.opacity(0.3))
+//        
+//}
