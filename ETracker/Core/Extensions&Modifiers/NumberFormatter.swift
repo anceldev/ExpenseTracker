@@ -8,7 +8,7 @@
 import Foundation
 
 extension NumberFormatter {
-    static let formatter: NumberFormatter = {
+    static let moneyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.maximumFractionDigits = 2

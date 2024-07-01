@@ -74,8 +74,8 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
             cont.mainContext.insert(Transaction.Category(name: "Home", icon: .house, hexColor: "#676767"))
             cont.mainContext.insert(Transaction.Category(name: "Health", icon: .doctor, hexColor: "#676767"))
             cont.mainContext.insert(Transaction.Category(name: "Hobbies", icon: .hobbies, hexColor: "#676767"))
-            cont.mainContext.insert(Transaction.Category(name: "Clothing purchases", icon: .clothes, hexColor: "#676767"))
-            cont.mainContext.insert(Transaction.Category(name: "Gym membership", icon: .gym, hexColor: "#676767"))
+            cont.mainContext.insert(Transaction.Category(name: "Clothing", icon: .clothes, hexColor: "#676767"))
+            cont.mainContext.insert(Transaction.Category(name: "Gym", icon: .gym, hexColor: "#676767"))
             cont.mainContext.insert(Transaction.Category(name: "Holidays", icon: .holidays, hexColor: "#676767"))
             
 //            print("Adding default subscriptions...")

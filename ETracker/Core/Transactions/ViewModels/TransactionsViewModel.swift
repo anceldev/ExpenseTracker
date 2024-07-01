@@ -82,6 +82,13 @@ public class TransactionsViewModel: TransactionsViewModelProtocol {
             print("DEBUG - Error: Use case error: \(error.localizedDescription)")
         }
     }
+    func filterByCategory(category: Transaction.Category?) -> [Transaction] {
+        if category == nil {
+            return self.transactions
+        }
+        let filteredTransactions = self.transactions.filter { $0.category.id == category?.id }
+        return filteredTransactions
+    }
     
     
     

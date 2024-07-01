@@ -8,31 +8,56 @@
 import SwiftUI
 
 struct TransactionsList: View {
-    var viewModel: TransactionsViewModel
+    
+    @Environment(TransactionsViewModel.self) var viewModel
+    var selectedCategory: Transaction.Category?
+    @State var selectedTransaction: Transaction?
+    @State var showShortInfo: Bool = true
+    
     var body: some View {
         ScrollView(.vertical, content: {
             VStack(spacing: 9, content: {
-                ForEach(viewModel.transactions) { transaction in
-                    TransactionCell(concept: transaction.concept, amount: transaction.amount, categoryName: transaction.category.name, icon: transaction.category.icon.rawValue, action: {})
-                        .padding(.horizontal, 19)
+                ForEach(viewModel.filterByCategory(category: selectedCategory)) { transaction in
+                    TransactionCell(
+                        concept: transaction.concept,
+                        amount: transaction.amount,
+                        categoryName: transaction.category.name,
+                        icon: transaction.category.icon.rawValue,
+                        transactionKind: transaction.transactionKind,
+                        action: {}
+                    )
+                    .padding(.horizontal, 19)
+                    .onTapGesture {
+                        self.selectedTransaction = transaction
+                        self.showShortInfo = true
+                    }
+                    .sheet(item: $selectedTransaction) { transaction in
+                        TransactionInfo(
+                            concept: transaction.concept,
+                            amount: transaction.amount,
+                            transactionKind: transaction.transactionKind,
+                            categoryName: transaction.category.name,
+                            receipt: Image("receipt"),
+                            date: transaction.timestamp)
+                        .presentationDetents([.height(493)])
+                        .presentationBackground(.clear)
+                    }
                 }
             })
             .padding(.vertical, 19)
         })
         .scrollIndicators(.hidden)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        //        .background(.red.opacity(0.2))
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 24))
-        //        .overlay {
-        //            RoundedRectangle(cornerRadius: 24)
-        //                .stroke(.white, lineWidth: 1)
-        //                .shadow(color: .gray300, radius: 0, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 2)
-        //        }
     }
 }
 
 #Preview {
-    TransactionsList(viewModel: TransactionsViewModel())
-        .padding()
+
+    return NavigationStack {
+        TransactionsList(selectedCategory: nil)
+            .environment(TransactionsViewModel())
+            .padding()
+    }
 }

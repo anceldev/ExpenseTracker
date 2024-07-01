@@ -10,7 +10,7 @@ import SwiftUI
 struct MoneyInput<InputField: View>: View where InputField: View {
     
     let title: String
-    let amount: Double
+    var amount: Double
     @ViewBuilder var inputField: () -> InputField
     
     init(title: String, amount: Double, inputField: @escaping () -> InputField) {

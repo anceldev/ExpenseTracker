@@ -24,15 +24,13 @@ enum ReceiptEnum: Identifiable, Hashable {
 struct AddTransaction: View {
  
     @Environment(\.dismiss) private var dismiss
-    
-    var viewModel: TransactionsViewModel
+    @Environment(TransactionsViewModel.self) var viewModel
     var categoriesViewModel = CategoriesViewModel()
     
     @State var transactionKind: Transaction.Kind = .income
     @State var amount: Double = 0.0
     @State var concept: String = ""
-//    @State var timestamp: Date? = nil
-        @State var timestamp: Date = .now
+    @State var timestamp: Date = .now
     
     
     @State var selectedCategory: Transaction.Category? = nil
@@ -47,8 +45,9 @@ struct AddTransaction: View {
     @State var receiptEnum: ReceiptEnum? = nil
     
     
-    init(viewModel: TransactionsViewModel) {
-        self.viewModel = viewModel
+//    init(viewModel: TransactionsViewModel) {
+//        self.viewModel = viewModel
+    init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = .purple600
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor:UIColor.white], for: .selected)
     }
@@ -74,7 +73,7 @@ struct AddTransaction: View {
                         TextField("Concept", text: $concept)
                     }
                     MoneyInput(title: "Amount", amount: amount) {
-                        TextField("", value: $amount, formatter: NumberFormatter())
+                        TextField("", value: $amount, formatter: NumberFormatter.moneyFormatter)
                     }
                     DateInput(showPicker: $selectedSheet, timestamp: timestamp)
                     ImageInput(receiptEnum: $receiptEnum, receiptPicker: $selectedSheet)
@@ -125,6 +124,7 @@ struct MyDetent: CustomPresentationDetent {
 }
 #Preview {
     NavigationStack {
-        AddTransaction(viewModel: TransactionsViewModel())
+        AddTransaction()
+            .environment(TransactionsViewModel())
     }
 }

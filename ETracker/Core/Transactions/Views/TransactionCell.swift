@@ -8,27 +8,19 @@
 import SwiftUI
 
 struct TransactionCell: View {
+    
     let concept: String
     let amount: Double
     let categoryName: String
     let icon: String
+    let transactionKind: Transaction.Kind
     let action: () -> Void
+    
     var body: some View {
         HStack(spacing: 14) {
-            VStack {
-                Image(icon)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 20)
-            }
-            .frame(width: 40, height: 40)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .overlay {
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(.gray300, lineWidth: 1)
-            }
-            
-            VStack(alignment: .leading) {
+            RoundedIcon(iconName: icon)
+
+            VStack(alignment: .leading, spacing: 4) {
                 Text(categoryName)
                     .font(.system(size: 13, weight: .regular, design: .rounded))
                     .foregroundStyle(.gray900)
@@ -36,14 +28,21 @@ struct TransactionCell: View {
                     .font(.system(size: 15, weight: .semibold))
             }
             .padding(.leading, 11)
-            Spacer()
+            Spacer(minLength: 0)
+            VStack(alignment: .center) {
+                if let formattedQuant = NumberFormatter.moneyFormatter.string(from: NSNumber(value: amount)) {
+                    Text(formattedQuant)
+                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+                        .foregroundStyle(transactionKind == .income ? .gray1K3 : .red)
+                }
+            }
             Button(action: action, label: {
                 Image(systemName: "ellipsis")
                     .rotationEffect(.degrees(90))
                     .foregroundStyle(.gray1K3)
             })
         }
-        .padding(.horizontal, 14)
+        .padding(.horizontal, 14).padding(.vertical, 14)
         .frame(maxWidth: .infinity)
         .frame(height: 68)
         .background(.white)
@@ -55,7 +54,9 @@ struct TransactionCell: View {
     }
 }
 #Preview {
-    TransactionsList(viewModel: TransactionsViewModel())
+//    TransactionsList(viewModel: TransactionsViewModel())
+    TransactionsList()
+        .environment(TransactionsViewModel())
         .padding()
 }
 //

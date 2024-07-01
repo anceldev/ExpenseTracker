@@ -19,7 +19,7 @@ struct CardView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Total Balance")
                     .font(.system(size: 20, weight: .bold, design: .rounded))
-                if let formattedQuant = NumberFormatter.formatter.string(from: NSNumber(value: balance)) {
+                if let formattedQuant = NumberFormatter.moneyFormatter.string(from: NSNumber(value: balance)) {
                     Text(formattedQuant)
                         .font(.system(size: 32, weight: .semibold, design: .rounded))
                 }
@@ -31,7 +31,7 @@ struct CardView: View {
                             Text("Income")
                                 .font(.system(size: 16, weight: .regular))
                         }
-                        if let formattedQuant = NumberFormatter.formatter.string(from: NSNumber(value: income)) {
+                        if let formattedQuant = NumberFormatter.moneyFormatter.string(from: NSNumber(value: income)) {
                             Text(formattedQuant)
                                 .font(.system(size: 16, weight: .semibold, design: .rounded))
                         }
@@ -43,7 +43,7 @@ struct CardView: View {
                             Text("Expense")
                                 .font(.system(size: 16, weight: .regular))
                         }
-                        if let formattedQuant = NumberFormatter.formatter.string(from: NSNumber(value: expense)) {
+                        if let formattedQuant = NumberFormatter.moneyFormatter.string(from: NSNumber(value: expense)) {
                             Text(formattedQuant)
                                 .font(.system(size: 16, weight: .semibold, design: .rounded))
                         }
@@ -55,7 +55,8 @@ struct CardView: View {
             
         }
         .foregroundStyle(.white)
-        .frame(width: 362, height: 223)
+//        .frame(width: 362, height: 223)
+        .frame(width: 362, height: 183)
         .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 }

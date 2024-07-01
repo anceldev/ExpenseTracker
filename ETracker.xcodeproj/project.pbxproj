@@ -51,9 +51,12 @@
 		B47163482C29E5EF0030CE5B /* FetchAllTransactionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163472C29E5EF0030CE5B /* FetchAllTransactionsUseCase.swift */; };
 		B471634A2C29E63F0030CE5B /* RemoveTransactionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163492C29E63F0030CE5B /* RemoveTransactionUseCase.swift */; };
 		B471634C2C29E6800030CE5B /* UpdateTransactionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471634B2C29E6800030CE5B /* UpdateTransactionUseCase.swift */; };
+		B47A9C9D2C2F2596003B0A26 /* CategoriesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A9C9C2C2F2596003B0A26 /* CategoriesRow.swift */; };
+		B47A9C9F2C2F2784003B0A26 /* RoundedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A9C9E2C2F2784003B0A26 /* RoundedIcon.swift */; };
 		B48AFB212C29F540008C0886 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB202C29F540008C0886 /* TransactionCell.swift */; };
 		B48AFB232C29F7E2008C0886 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB222C29F7E2008C0886 /* CardView.swift */; };
 		B48AFB252C29FD19008C0886 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB242C29FD19008C0886 /* NumberFormatter.swift */; };
+		B48FA6572C32F8CF005C4573 /* TransactionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48FA6562C32F8CF005C4573 /* TransactionInfo.swift */; };
 		B4BDD1EE2C2C0794005934AD /* ImageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1ED2C2C0794005934AD /* ImageInput.swift */; };
 		B4BDD1F02C2C0E18005934AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */; };
 		B4BDD1F22C2C14AC005934AD /* CustomCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */; };
@@ -110,9 +113,12 @@
 		B47163472C29E5EF0030CE5B /* FetchAllTransactionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllTransactionsUseCase.swift; sourceTree = "<group>"; };
 		B47163492C29E63F0030CE5B /* RemoveTransactionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTransactionUseCase.swift; sourceTree = "<group>"; };
 		B471634B2C29E6800030CE5B /* UpdateTransactionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTransactionUseCase.swift; sourceTree = "<group>"; };
+		B47A9C9C2C2F2596003B0A26 /* CategoriesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRow.swift; sourceTree = "<group>"; };
+		B47A9C9E2C2F2784003B0A26 /* RoundedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedIcon.swift; sourceTree = "<group>"; };
 		B48AFB202C29F540008C0886 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		B48AFB222C29F7E2008C0886 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B48AFB242C29FD19008C0886 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		B48FA6562C32F8CF005C4573 /* TransactionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfo.swift; sourceTree = "<group>"; };
 		B4BDD1ED2C2C0794005934AD /* ImageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInput.swift; sourceTree = "<group>"; };
 		B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCapsule.swift; sourceTree = "<group>"; };
@@ -344,6 +350,7 @@
 		B47163002C298BE60030CE5B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B47A9C9C2C2F2596003B0A26 /* CategoriesRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -411,6 +418,7 @@
 				B48AFB202C29F540008C0886 /* TransactionCell.swift */,
 				B45761202C2AE14A00832CAE /* TransactionsList.swift */,
 				B471633E2C29E2EA0030CE5B /* TransactionsView.swift */,
+				B48FA6562C32F8CF005C4573 /* TransactionInfo.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -439,6 +447,7 @@
 				B457611E2C2AE08300832CAE /* PlusButton.swift */,
 				B47163222C2993730030CE5B /* ProfileBar.swift */,
 				B47163272C299C7A0030CE5B /* VerticalDivider.swift */,
+				B47A9C9E2C2F2784003B0A26 /* RoundedIcon.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -592,6 +601,7 @@
 				B457611F2C2AE08300832CAE /* PlusButton.swift in Sources */,
 				B47162D62C2989B40030CE5B /* ETrackerApp.swift in Sources */,
 				B471630D2C298E740030CE5B /* AuthService.swift in Sources */,
+				B47A9C9D2C2F2596003B0A26 /* CategoriesRow.swift in Sources */,
 				B47163302C29A8150030CE5B /* Gradients.swift in Sources */,
 				B47163262C299AD40030CE5B /* DateInput.swift in Sources */,
 				B471633F2C29E2EA0030CE5B /* TransactionsView.swift in Sources */,
@@ -605,6 +615,7 @@
 				B48AFB212C29F540008C0886 /* TransactionCell.swift in Sources */,
 				B4BDD1F02C2C0E18005934AD /* ImagePicker.swift in Sources */,
 				B47163432C29E3D60030CE5B /* TransactionsViewModel.swift in Sources */,
+				B48FA6572C32F8CF005C4573 /* TransactionInfo.swift in Sources */,
 				B471631D2C298F980030CE5B /* SubNotification.swift in Sources */,
 				B48AFB252C29FD19008C0886 /* NumberFormatter.swift in Sources */,
 				B4BDD1FD2C2C3A3F005934AD /* FetchAllCategoriesUseCase.swift in Sources */,
@@ -617,6 +628,7 @@
 				B48AFB232C29F7E2008C0886 /* CardView.swift in Sources */,
 				B4BDD1F62C2C2E57005934AD /* TestView.swift in Sources */,
 				B45761232C2AE43B00832CAE /* MoneyInput.swift in Sources */,
+				B47A9C9F2C2F2784003B0A26 /* RoundedIcon.swift in Sources */,
 				B4BDD1F22C2C14AC005934AD /* CustomCapsule.swift in Sources */,
 				B47163232C2993730030CE5B /* ProfileBar.swift in Sources */,
 			);
