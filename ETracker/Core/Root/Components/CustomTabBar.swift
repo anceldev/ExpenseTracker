@@ -91,7 +91,7 @@ struct TabBarButton: View {
             }
         } label: {
             VStack(spacing: 0) {
-                Image(systemName: tab.icon)
+                Image(systemName: selectedTab == tab ? "\(tab.icon).fill" : tab.icon)
                     .resizable()
                     .renderingMode(.template)
                     .aspectRatio(contentMode: .fit)

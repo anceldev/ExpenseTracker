@@ -22,7 +22,7 @@ enum Tab: String, CaseIterable {
         case .analytics:
             "chart.pie"
         case .settings:
-            "gear"
+            "person"
         }
     }
 }

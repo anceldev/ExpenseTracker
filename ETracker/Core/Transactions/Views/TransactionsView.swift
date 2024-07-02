@@ -20,16 +20,6 @@ struct TransactionsView: View {
     
     var body: some View {
         ZStack {
-//            GeometryReader { geo in
-//                NavigationLink {
-//                    AddTransaction()
-//                        .environment(viewModel)
-//                } label: {
-//                    PlusButton()
-//                }
-//                .position(x: CGFloat(geo.size.width  - 60.0), y: CGFloat(geo.size.height - 60.0))
-//            }
-//            .zIndex(100)
             VStack(spacing: 20) {
                 CardView(income: viewModel.totalIncomes, expense: viewModel.totalExpenses)
                 CategoriesRow(selected: $selectedCategory)

@@ -23,6 +23,7 @@ struct ContentView: View {
                 MainTab {
                     ProfileBar(name: authViewModel.user?.displayName ?? authViewModel.email, profilePhoto: "profile-test")
                 }
+                .environmentObject(authViewModel)
             }
         }
     }

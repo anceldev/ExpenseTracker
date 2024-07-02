@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTab<Content: View>: View where Content: View {
     
     @ViewBuilder var navigationBar: () -> Content
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     @State private var viewModel = TransactionsViewModel()
     @State var selectedTab: Tab = .home
     
@@ -31,7 +32,8 @@ struct MainTab<Content: View>: View where Content: View {
                 case .analytics:
                     AnalyticsView()
                 case .settings:
-                    SettingsView()
+                    AccountView()
+                        .environmentObject(authViewModel)
                 }
             }
             CustomTabBar(selectedTab: $selectedTab)

@@ -36,10 +36,10 @@ struct ProfileBar: View {
             Spacer()
             Menu {
                 NavigationLink {
-                    AccountView()
+                    SettingsView()
                         .environmentObject(viewModel)
                 } label: {
-                    Text("Account")
+                    Text("Settings")
                 }
             } label: {
                 Image(systemName: "gear")

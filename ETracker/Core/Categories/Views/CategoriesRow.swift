@@ -13,32 +13,32 @@ struct CategoriesRow: View {
     
     var body: some View {
         ScrollView(.horizontal) {
-            HStack(spacing: 25) {
-                ForEach(viewModel.categories) { category in
-                    Button(action: {
-                        withAnimation(.spring) {
-                            if category.id == selected?.id {
-                                selected = nil
-                            } else {
-                                selected = category
+                HStack(spacing: 25) {
+                    ForEach(viewModel.categories) { category in
+                        Button(action: {
+                            withAnimation(.spring) {
+                                if category.id == selected?.id {
+                                    selected = nil
+                                } else {
+                                    selected = category
+                                }
                             }
-                        }
-                        print("Selected is: \(self.selected?.name ?? "None")")
-                    }, label: {
-                        VStack {
+                            print("Selected is: \(self.selected?.name ?? "None")")
+                        }, label: {
                             VStack {
-                                RoundedIcon(iconName: category.icon.rawValue, selected: category.id == self.selected?.id)
+                                VStack {
+                                    RoundedIcon(iconName: category.icon.rawValue, selected: category.id == self.selected?.id)
+                                }
+                                Text(category.name.capitalized)
+                                    .font(.system(size: 10  , weight: .semibold, design: .rounded))
+                                    .foregroundStyle(category.id == self.selected?.id ? .purple400 : .gray1K)
                             }
-                            Text(category.name.capitalized)
-                                .font(.system(size: 10  , weight: .semibold, design: .rounded))
-                                .foregroundStyle(category.id == self.selected?.id ? .purple400 : .gray1K)
-                        }
-                    })
+                        })
+                    }
                 }
-            }
-            .padding(.horizontal, 19)
-            .padding(.vertical, 19)
-            .frame(maxWidth: .infinity )
+                .padding(.horizontal, 19)
+                .padding(.vertical, 19)
+                .frame(maxWidth: .infinity )
         }
         .scrollIndicators(.hidden)
         .frame(maxWidth: .infinity)
