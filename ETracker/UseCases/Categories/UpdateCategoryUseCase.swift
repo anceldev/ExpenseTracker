@@ -8,7 +8,7 @@
 import Foundation
 
 protocol UpdateCategoryProtocol {
-    func updateCategory(id: UUID, name: String, icon: Transaction.Category.Icon, hexcolor: String) throws
+    func updateCategory(id: UUID, name: String, icon: TransactionCategory.Icon, hexcolor: String) throws
 }
 
 struct UpdateCategoryUseCase: UpdateCategoryProtocol {
@@ -18,7 +18,7 @@ struct UpdateCategoryUseCase: UpdateCategoryProtocol {
         self.database = database
     }
     
-    func updateCategory(id: UUID, name: String, icon: Transaction.Category.Icon, hexcolor: String) throws {
+    func updateCategory(id: UUID, name: String, icon: TransactionCategory.Icon, hexcolor: String) throws {
         try database.updateCategory(id: id, name: name, icon: icon, hexColor: hexcolor)
     }
 }

@@ -15,7 +15,7 @@ struct CategoryPicker: View {
     
     var viewModel: CategoriesViewModel
     
-    @Binding var selectedCategory: Transaction.Category?
+    @Binding var selectedCategory: TransactionCategory?
     /// View Properties
     @State private var showOptions: Bool = false
     /// Environment Scheme

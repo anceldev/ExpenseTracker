@@ -9,14 +9,14 @@ import Foundation
 import Observation
 
 protocol CategoriesViewModelProtocol {
-    var categories: [Transaction.Category] { get set }
+    var categories: [TransactionCategory] { get set }
     var databaseError: DatabaseError? { get set }
 }
 
 
 @Observable
 public class CategoriesViewModel: CategoriesViewModelProtocol {
-    var categories: [Transaction.Category]
+    var categories: [TransactionCategory]
     var databaseError: DatabaseError?
     
     private var createCategoryUseCase: CreateCategoryProtocol
@@ -25,7 +25,7 @@ public class CategoriesViewModel: CategoriesViewModelProtocol {
     private var removeCategoryUseCase: RemoveCategoryProtocol
     
     init(
-        categories: [Transaction.Category] = [],
+        categories: [TransactionCategory] = [],
         createCategoryUseCase: CreateCategoryProtocol = CreateCategoryUseCase(),
         fetchCategoriesUseCase: FetchAllCategoriesProtocol = FetchAllCategoriesUseCase(),
         updateCategoryUseCase: UpdateCategoryProtocol = UpdateCategoryUseCase(),
@@ -39,7 +39,7 @@ public class CategoriesViewModel: CategoriesViewModelProtocol {
         fetchAllCategories()
     }
     
-    func createCategory(name: String, icon: Transaction.Category.Icon, hexColor: String) {
+    func createCategory(name: String, icon: TransactionCategory.Icon, hexColor: String) {
         do {
             try createCategoryUseCase.createCategory(name: name, icon: icon, hexColor: hexColor)
             fetchAllCategories()
@@ -47,7 +47,7 @@ public class CategoriesViewModel: CategoriesViewModelProtocol {
             print("DEBUG - Error: Error creating category with use case \(error.localizedDescription)")
         }
     }
-    func updateCategory(id: UUID, name: String, icon: Transaction.Category.Icon, hexColor: String) {
+    func updateCategory(id: UUID, name: String, icon: TransactionCategory.Icon, hexColor: String) {
         do {
             try updateCategoryUseCase.updateCategory(id: id, name: name, icon: icon, hexcolor: hexColor)
             fetchAllCategories()

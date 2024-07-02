@@ -19,12 +19,12 @@ enum DatabaseError: Error {
 protocol ExpenseTrackerDatabaseProtocol {
     func insertTransaction(newTransaction: Transaction) throws
     func fetchAllTransactions() throws -> [Transaction]
-    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: Data?) throws
+    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: TransactionCategory, timestamp: Date, receipt: Data?) throws
     func removeTransaction(id: UUID) throws
     
-    func insertCategory(newCategory: Transaction.Category) throws
-    func fetchAllCategories() throws -> [Transaction.Category]
-    func updateCategory(id: UUID, name: String, icon: Transaction.Category.Icon, hexColor: String) throws
+    func insertCategory(newCategory: TransactionCategory) throws
+    func fetchAllCategories() throws -> [TransactionCategory]
+    func updateCategory(id: UUID, name: String, icon: TransactionCategory.Icon, hexColor: String) throws
     func removeCategory(id: UUID) throws
     
     func insertSubscription(newSubscription: Subscription) throws
@@ -49,7 +49,7 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
         @AppStorage("sampleDataAdded") var sampleDataAdded: Bool = false
         
         do {
-            let schema = Schema([Transaction.self, Transaction.Category.self, Subscription.self, SubNotification.self])
+            let schema = Schema([Transaction.self, TransactionCategory.self, Subscription.self, SubNotification.self])
             let config = ModelConfiguration(isStoredInMemoryOnly: inMemory, allowsSave: true)
             
             var cont: ModelContainer!
@@ -68,26 +68,16 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
             
             // Default categories values
             print("Adding default categories...")
-            cont.mainContext.insert(Transaction.Category(name: "Groceries", icon: .groceries, hexColor: "#555555"))
-            cont.mainContext.insert(Transaction.Category(name: "Gas", icon: .gas, hexColor: "#000000"))
-            cont.mainContext.insert(Transaction.Category(name: "Salary", icon: .cheapdollar, hexColor: "#676767"))
-            cont.mainContext.insert(Transaction.Category(name: "Home", icon: .house, hexColor: "#676767"))
-            cont.mainContext.insert(Transaction.Category(name: "Health", icon: .doctor, hexColor: "#676767"))
-            cont.mainContext.insert(Transaction.Category(name: "Hobbies", icon: .hobbies, hexColor: "#676767"))
-            cont.mainContext.insert(Transaction.Category(name: "Clothing", icon: .clothes, hexColor: "#676767"))
-            cont.mainContext.insert(Transaction.Category(name: "Gym", icon: .gym, hexColor: "#676767"))
-            cont.mainContext.insert(Transaction.Category(name: "Holidays", icon: .holidays, hexColor: "#676767"))
+            cont.mainContext.insert(TransactionCategory(name: "Groceries", icon: .groceries, hexColor: "#555555"))
+            cont.mainContext.insert(TransactionCategory(name: "Gas", icon: .gas, hexColor: "#000000"))
+            cont.mainContext.insert(TransactionCategory(name: "Salary", icon: .cheapdollar, hexColor: "#676767"))
+            cont.mainContext.insert(TransactionCategory(name: "Home", icon: .house, hexColor: "#676767"))
+            cont.mainContext.insert(TransactionCategory(name: "Health", icon: .doctor, hexColor: "#676767"))
+            cont.mainContext.insert(TransactionCategory(name: "Hobbies", icon: .hobbies, hexColor: "#676767"))
+            cont.mainContext.insert(TransactionCategory(name: "Clothing", icon: .clothes, hexColor: "#676767"))
+            cont.mainContext.insert(TransactionCategory(name: "Gym", icon: .gym, hexColor: "#676767"))
+            cont.mainContext.insert(TransactionCategory(name: "Holidays", icon: .holidays, hexColor: "#676767"))
             
-//            print("Adding default subscriptions...")
-//            let calendar = Calendar.current
-//            var dateComponents = DateComponents()
-//            dateComponents.year = 2024
-//            dateComponents.month = 6
-//            dateComponents.day = 28
-//            
-//            let spotifyLogoData = UIImage(named: "spotify")?.pngData()
-//            let spotifyDate: Date? = calendar.date(from: dateComponents)
-//            cont.mainContext.insert(Subscription(service: "Spotify", amount: 5.00,chargeDate: spotifyDate, active: false, notification: nil , serviceLogo: spotifyLogoData))
             
             print("Saving default data...")
             try cont.mainContext.save()
@@ -122,7 +112,7 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
         }
     }
     @MainActor
-    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: Transaction.Category, timestamp: Date, receipt: Data?) throws {
+    func updateTransaction(id: UUID, concept: String, amount: Double, transactionKind: Transaction.Kind, category: TransactionCategory, timestamp: Date, receipt: Data?) throws {
         let transactionPredicate = #Predicate<Transaction> {
             $0.id == id
         }
@@ -146,13 +136,25 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
             throw DatabaseError.errorUpdate
         }
     }
-    
+    @MainActor
     func removeTransaction(id: UUID) throws {
+        let transactionPredicate = #Predicate<Transaction> { $0.id == id }
+        var fetchDescriptor = FetchDescriptor<Transaction>(predicate: transactionPredicate)
+        fetchDescriptor.fetchLimit = 1
         
+        do {
+            guard let deleteTransaction = try container.mainContext.fetch(fetchDescriptor).first else {
+                throw DatabaseError.errorFetch
+            }
+            container.mainContext.delete(deleteTransaction)
+        } catch {
+            print("DEBUG - Error: Can't delete transaction \(error.localizedDescription)")
+            throw DatabaseError.errorRemove
+        }
     }
     
     @MainActor
-    func insertCategory(newCategory: Transaction.Category) throws {
+    func insertCategory(newCategory: TransactionCategory) throws {
         do {
             container.mainContext.insert(newCategory)
             try container.mainContext.save()
@@ -163,8 +165,8 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
     }
     
     @MainActor
-    func fetchAllCategories() throws -> [Transaction.Category] {
-        let fetchDescriptor = FetchDescriptor<Transaction.Category>(sortBy: [SortDescriptor<Transaction.Category>(\.name)])
+    func fetchAllCategories() throws -> [TransactionCategory] {
+        let fetchDescriptor = FetchDescriptor<TransactionCategory>(sortBy: [SortDescriptor<TransactionCategory>(\.name)])
         
         do {
             let categories = try container.mainContext.fetch(fetchDescriptor)
@@ -175,11 +177,11 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
         }
     }
     @MainActor
-    func updateCategory(id: UUID, name: String, icon: Transaction.Category.Icon, hexColor: String) throws {
-        let categoryPredicate = #Predicate<Transaction.Category> {
+    func updateCategory(id: UUID, name: String, icon: TransactionCategory.Icon, hexColor: String) throws {
+        let categoryPredicate = #Predicate<TransactionCategory> {
             $0.id == id
         }
-        var fetchDescriptor = FetchDescriptor<Transaction.Category>(predicate: categoryPredicate)
+        var fetchDescriptor = FetchDescriptor<TransactionCategory>(predicate: categoryPredicate)
         fetchDescriptor.fetchLimit = 1
         
         do {
@@ -201,10 +203,10 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
     }
     @MainActor
     func removeCategory(id: UUID) throws {
-        let categoryPredicate = #Predicate<Transaction.Category> {
+        let categoryPredicate = #Predicate<TransactionCategory> {
             $0.id == id
         }
-        var fetchDescriptor = FetchDescriptor<Transaction.Category>(predicate: categoryPredicate)
+        var fetchDescriptor = FetchDescriptor<TransactionCategory>(predicate: categoryPredicate)
         fetchDescriptor.fetchLimit = 1
         
         do {

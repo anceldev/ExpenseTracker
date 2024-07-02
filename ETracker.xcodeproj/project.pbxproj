@@ -57,6 +57,14 @@
 		B48AFB232C29F7E2008C0886 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB222C29F7E2008C0886 /* CardView.swift */; };
 		B48AFB252C29FD19008C0886 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AFB242C29FD19008C0886 /* NumberFormatter.swift */; };
 		B48FA6572C32F8CF005C4573 /* TransactionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48FA6562C32F8CF005C4573 /* TransactionInfo.swift */; };
+		B48FA6592C331978005C4573 /* ReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48FA6582C331978005C4573 /* ReceiptView.swift */; };
+		B4969D902C3407C9004EF398 /* EditTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969D8F2C3407C9004EF398 /* EditTransaction.swift */; };
+		B4969D922C34139D004EF398 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969D912C34139D004EF398 /* CustomTabBar.swift */; };
+		B4969D942C3416C3004EF398 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969D932C3416C3004EF398 /* RootView.swift */; };
+		B4969D972C341949004EF398 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969D962C341949004EF398 /* Tab.swift */; };
+		B4969D992C341D67004EF398 /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969D982C341D67004EF398 /* SubscriptionsView.swift */; };
+		B4969D9C2C341D86004EF398 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969D9B2C341D86004EF398 /* AnalyticsView.swift */; };
+		B4969D9F2C341DA4004EF398 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969D9E2C341DA4004EF398 /* SettingsView.swift */; };
 		B4BDD1EE2C2C0794005934AD /* ImageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1ED2C2C0794005934AD /* ImageInput.swift */; };
 		B4BDD1F02C2C0E18005934AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */; };
 		B4BDD1F22C2C14AC005934AD /* CustomCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */; };
@@ -119,6 +127,14 @@
 		B48AFB222C29F7E2008C0886 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B48AFB242C29FD19008C0886 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		B48FA6562C32F8CF005C4573 /* TransactionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfo.swift; sourceTree = "<group>"; };
+		B48FA6582C331978005C4573 /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
+		B4969D8F2C3407C9004EF398 /* EditTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransaction.swift; sourceTree = "<group>"; };
+		B4969D912C34139D004EF398 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		B4969D932C3416C3004EF398 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		B4969D962C341949004EF398 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		B4969D982C341D67004EF398 /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
+		B4969D9B2C341D86004EF398 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		B4969D9E2C341DA4004EF398 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B4BDD1ED2C2C0794005934AD /* ImageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInput.swift; sourceTree = "<group>"; };
 		B4BDD1EF2C2C0E18005934AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B4BDD1F12C2C14AC005934AD /* CustomCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCapsule.swift; sourceTree = "<group>"; };
@@ -203,9 +219,11 @@
 		B47162EF2C298B2C0030CE5B /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				B4969D952C34193E004EF398 /* Models */,
 				B47163242C299AC30030CE5B /* Components */,
 				B471631E2C2992920030CE5B /* MainTab.swift */,
 				B4BDD1F52C2C2E57005934AD /* TestView.swift */,
+				B4969D932C3416C3004EF398 /* RootView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -240,6 +258,7 @@
 		B47162F32C298B710030CE5B /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				B4969D9A2C341D7E004EF398 /* Views */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
@@ -274,12 +293,12 @@
 		B47162F72C298B8A0030CE5B /* Extensions&Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				B47163182C298F530030CE5B /* HexColor.swift */,
 				B47163292C29A0EF0030CE5B /* CustomInputFieldModifier.swift */,
 				B471632D2C29A6690030CE5B /* Buttons.swift */,
 				B471632F2C29A8150030CE5B /* Gradients.swift */,
-				B47163402C29E32B0030CE5B /* TanItemModifier.swift */,
+				B47163182C298F530030CE5B /* HexColor.swift */,
 				B48AFB242C29FD19008C0886 /* NumberFormatter.swift */,
+				B47163402C29E32B0030CE5B /* TanItemModifier.swift */,
 			);
 			path = "Extensions&Modifiers";
 			sourceTree = "<group>";
@@ -296,6 +315,7 @@
 		B47162FA2C298B990030CE5B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				B4969D9D2C341D9C004EF398 /* Views */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -389,6 +409,7 @@
 		B47163052C298C0B0030CE5B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B4969D982C341D67004EF398 /* SubscriptionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -419,6 +440,8 @@
 				B45761202C2AE14A00832CAE /* TransactionsList.swift */,
 				B471633E2C29E2EA0030CE5B /* TransactionsView.swift */,
 				B48FA6562C32F8CF005C4573 /* TransactionInfo.swift */,
+				B48FA6582C331978005C4573 /* ReceiptView.swift */,
+				B4969D8F2C3407C9004EF398 /* EditTransaction.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -448,6 +471,7 @@
 				B47163222C2993730030CE5B /* ProfileBar.swift */,
 				B47163272C299C7A0030CE5B /* VerticalDivider.swift */,
 				B47A9C9E2C2F2784003B0A26 /* RoundedIcon.swift */,
+				B4969D912C34139D004EF398 /* CustomTabBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -485,6 +509,30 @@
 				B471634B2C29E6800030CE5B /* UpdateTransactionUseCase.swift */,
 			);
 			path = Transactions;
+			sourceTree = "<group>";
+		};
+		B4969D952C34193E004EF398 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B4969D962C341949004EF398 /* Tab.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B4969D9A2C341D7E004EF398 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B4969D9B2C341D86004EF398 /* AnalyticsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B4969D9D2C341D9C004EF398 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B4969D9E2C341DA4004EF398 /* SettingsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B4BDD1F92C2C38E6005934AD /* Categories */ = {
@@ -583,6 +631,7 @@
 				B4BDD2012C2C3C35005934AD /* UpdateCategoryUseCase.swift in Sources */,
 				B4BDD1F42C2C2B45005934AD /* CategoryPicker.swift in Sources */,
 				B47163412C29E32B0030CE5B /* TanItemModifier.swift in Sources */,
+				B4969D942C3416C3004EF398 /* RootView.swift in Sources */,
 				B47163282C299C7A0030CE5B /* VerticalDivider.swift in Sources */,
 				B471630F2C298EA90030CE5B /* ExpenseTrackerDatabase.swift in Sources */,
 				B47163112C298ECA0030CE5B /* Transaction.swift in Sources */,
@@ -596,6 +645,7 @@
 				B471631B2C298F710030CE5B /* Subscription.swift in Sources */,
 				B471634C2C29E6800030CE5B /* UpdateTransactionUseCase.swift in Sources */,
 				B4BDD1EE2C2C0794005934AD /* ImageInput.swift in Sources */,
+				B4969D972C341949004EF398 /* Tab.swift in Sources */,
 				B471632C2C29A2250030CE5B /* CustomInputField.swift in Sources */,
 				B4BDD1FF2C2C3B3E005934AD /* RemoveCategoryUseCase.swift in Sources */,
 				B457611F2C2AE08300832CAE /* PlusButton.swift in Sources */,
@@ -604,17 +654,23 @@
 				B47A9C9D2C2F2596003B0A26 /* CategoriesRow.swift in Sources */,
 				B47163302C29A8150030CE5B /* Gradients.swift in Sources */,
 				B47163262C299AD40030CE5B /* DateInput.swift in Sources */,
+				B4969D9F2C341DA4004EF398 /* SettingsView.swift in Sources */,
 				B471633F2C29E2EA0030CE5B /* TransactionsView.swift in Sources */,
+				B4969D902C3407C9004EF398 /* EditTransaction.swift in Sources */,
 				B47163462C29E44E0030CE5B /* CreateTransactionUseCase.swift in Sources */,
 				B45761252C2AE8B500832CAE /* CustomNilDatePicker.swift in Sources */,
+				B4969D992C341D67004EF398 /* SubscriptionsView.swift in Sources */,
 				B45761272C2AEE7D00832CAE /* CloseButton.swift in Sources */,
 				B47163382C29DCFC0030CE5B /* AuthenticationView.swift in Sources */,
 				B471634A2C29E63F0030CE5B /* RemoveTransactionUseCase.swift in Sources */,
 				B47163322C29B58A0030CE5B /* FormDivider.swift in Sources */,
 				B47163172C298F450030CE5B /* Icon.swift in Sources */,
+				B4969D9C2C341D86004EF398 /* AnalyticsView.swift in Sources */,
 				B48AFB212C29F540008C0886 /* TransactionCell.swift in Sources */,
 				B4BDD1F02C2C0E18005934AD /* ImagePicker.swift in Sources */,
+				B48FA6592C331978005C4573 /* ReceiptView.swift in Sources */,
 				B47163432C29E3D60030CE5B /* TransactionsViewModel.swift in Sources */,
+				B4969D922C34139D004EF398 /* CustomTabBar.swift in Sources */,
 				B48FA6572C32F8CF005C4573 /* TransactionInfo.swift in Sources */,
 				B471631D2C298F980030CE5B /* SubNotification.swift in Sources */,
 				B48AFB252C29FD19008C0886 /* NumberFormatter.swift in Sources */,

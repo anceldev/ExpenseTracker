@@ -14,10 +14,11 @@ struct SignUpView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 40, content: {
-            Text("Sign up")
+            Text("New account?\nSign up")
                 .font(.system(size: 32, weight: .bold, design: .rounded))
                 .foregroundStyle(.purple700)
-                .frame(maxWidth: .infinity, alignment: .leading)
+//                .frame(maxWidth: .infinity, alignment: .leading)
+//                .frame(maxHeight: .infinity)
             VStack(spacing: 20, content: {
                 VStack(alignment: .leading, content: {
                     CustomInputField(title: "Name", text: viewModel.fullname, imageName: "user", autoCorrectionDisabled: true) {
@@ -45,7 +46,6 @@ struct SignUpView: View {
                     }
                 })
             })
-            Spacer()
             Button(action: {
 //                dismiss()
                 viewModel.signUp()

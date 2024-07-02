@@ -14,7 +14,7 @@ public class Transaction: Identifiable {
     var concept: String
     var amount: Double
     var transactionKind: Transaction.Kind
-    var category: Transaction.Category
+    var category: TransactionCategory
     var timestamp: Date
     @Attribute(.externalStorage) var receipt: Data?
     
@@ -23,7 +23,7 @@ public class Transaction: Identifiable {
         concept: String = "",
         amount: Double = 0.00,
         transactionKind: Transaction.Kind = .income,
-        category: Category,
+        category: TransactionCategory,
         timestamp: Date = .now,
         receipt: Data? = nil
     ) {

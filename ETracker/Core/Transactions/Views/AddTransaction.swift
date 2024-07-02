@@ -33,7 +33,7 @@ struct AddTransaction: View {
     @State var timestamp: Date = .now
     
     
-    @State var selectedCategory: Transaction.Category? = nil
+    @State var selectedCategory: TransactionCategory? = nil
     
     @State var showDatePicker = false
 //    @State var showReceiptButtons = false

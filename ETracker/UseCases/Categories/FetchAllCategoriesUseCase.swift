@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FetchAllCategoriesProtocol {
-    func fetchAll() throws -> [Transaction.Category]
+    func fetchAll() throws -> [TransactionCategory]
 }
 
 struct FetchAllCategoriesUseCase: FetchAllCategoriesProtocol {
@@ -17,7 +17,7 @@ struct FetchAllCategoriesUseCase: FetchAllCategoriesProtocol {
         self.database = database
     }
     
-    func fetchAll() throws -> [Transaction.Category] {
+    func fetchAll() throws -> [TransactionCategory] {
         try database.fetchAllCategories()
     }
 }

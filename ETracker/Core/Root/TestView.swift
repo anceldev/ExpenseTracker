@@ -14,7 +14,7 @@ struct TestView: View {
     @State private var selection2: String?
     
     var viewModel = CategoriesViewModel()
-    @State var selectedCategory: Transaction.Category? = nil
+    @State var selectedCategory: TransactionCategory? = nil
     
     var body: some View {
         NavigationStack {

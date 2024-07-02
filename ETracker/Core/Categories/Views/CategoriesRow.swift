@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoriesRow: View {
     @Environment(CategoriesViewModel.self) var viewModel
-    @Binding var selected: Transaction.Category?
+    @Binding var selected: TransactionCategory?
     
     var body: some View {
         ScrollView(.horizontal) {

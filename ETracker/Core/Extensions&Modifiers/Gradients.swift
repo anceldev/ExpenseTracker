@@ -10,5 +10,5 @@ import SwiftUI
 
 let purpleButton: [Color] = [.purple500, .purple600]
 let pinkCard: [Color] = [Color(hex: "#E163DE"), Color(hex: "#FC90F6")]
-    
+let redButton: [Color] = [Color(hex: "#ff1605"), Color(hex: "#fe4010")]
     

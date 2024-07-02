@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CreateCategoryProtocol {
-    func createCategory(name: String, icon: Transaction.Category.Icon, hexColor: String) throws
+    func createCategory(name: String, icon: TransactionCategory.Icon, hexColor: String) throws
 }
 
 struct CreateCategoryUseCase: CreateCategoryProtocol {
@@ -18,8 +18,8 @@ struct CreateCategoryUseCase: CreateCategoryProtocol {
         self.database = database
     }
     
-    func createCategory(name: String, icon: Transaction.Category.Icon, hexColor: String) throws {
-        let newCategory: Transaction.Category = .init(name: name, icon: icon, hexColor: hexColor)
+    func createCategory(name: String, icon: TransactionCategory.Icon, hexColor: String) throws {
+        let newCategory: TransactionCategory = .init(name: name, icon: icon, hexColor: hexColor)
         try database.insertCategory(newCategory: newCategory)
     }
 }

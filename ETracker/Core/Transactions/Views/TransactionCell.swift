@@ -14,12 +14,12 @@ struct TransactionCell: View {
     let categoryName: String
     let icon: String
     let transactionKind: Transaction.Kind
-    let action: () -> Void
+    let viewAction: () -> Void
+    let deleteAction: () -> Void
     
     var body: some View {
         HStack(spacing: 14) {
             RoundedIcon(iconName: icon)
-
             VStack(alignment: .leading, spacing: 4) {
                 Text(categoryName)
                     .font(.system(size: 13, weight: .regular, design: .rounded))
@@ -36,25 +36,41 @@ struct TransactionCell: View {
                         .foregroundStyle(transactionKind == .income ? .gray1K3 : .red)
                 }
             }
-            Button(action: action, label: {
-                Image(systemName: "ellipsis")
-                    .rotationEffect(.degrees(90))
-                    .foregroundStyle(.gray1K3)
-            })
+            Menu {
+                Button(action: {
+                    viewAction()
+                }, label: {
+                    Text("Details")
+                })
+                NavigationLink("Edit") {
+                    EditTransaction()
+                }
+                Button("Delete", role: .destructive) {
+                    deleteAction()
+                }
+            } label: {
+                VStack {
+                    Image(systemName: "ellipsis")
+                        .rotationEffect(.degrees(90))
+                        .foregroundStyle(.gray1K3)
+                }
+                .frame(maxHeight: .infinity)
+            }
         }
-        .padding(.horizontal, 14).padding(.vertical, 14)
+        //        .padding(.horizontal, 14)
+        .padding(.vertical, 14)
         .frame(maxWidth: .infinity)
         .frame(height: 68)
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 14))
-        .overlay {
-            RoundedRectangle(cornerRadius: 14)
-                .stroke(.gray300, lineWidth: 1)
-        }
+        //        .overlay {
+        //            RoundedRectangle(cornerRadius: 14)
+        //                .stroke(.gray300, lineWidth: 1)
+        //        }
     }
 }
 #Preview {
-//    TransactionsList(viewModel: TransactionsViewModel())
+    
     TransactionsList()
         .environment(TransactionsViewModel())
         .padding()
@@ -68,5 +84,5 @@ struct TransactionCell: View {
 //    }
 //    .padding()
 //    .background(.red.opacity(0.3))
-//        
+//
 //}

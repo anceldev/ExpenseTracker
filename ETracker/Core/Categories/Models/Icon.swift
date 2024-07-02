@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-extension Transaction.Category {
+extension TransactionCategory {
     enum Icon: String, Codable, CaseIterable, Identifiable {
         case briefcase
         case calendarclock

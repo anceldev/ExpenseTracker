@@ -9,9 +9,12 @@ import SwiftUI
 
 struct CardView: View {
     
-    let balance: Double
-    let income: Double
+    let income: Double 
     let expense: Double
+    
+    var balance: Double {
+        income - expense
+    }
     
     var body: some View {
         ZStack {
@@ -62,5 +65,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(balance: 1200.00, income: 1450.0, expense: 150.00)
+    CardView(income: 1450.0, expense: 150.00)
 }
