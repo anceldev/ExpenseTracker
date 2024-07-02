@@ -19,19 +19,9 @@ struct MainTab<Content: View>: View where Content: View {
     }
     
     var body: some View {
-//        VStack {
-//            navigationBar()
-//            TabView {
-//                TransactionsView()
-//                    .environment(viewModel)
-//                    .tabItemModifier("house")
-//                AddTransaction()
-//                    .environment(viewModel)
-//                    .tabItemModifier("plus")
-//            }
-//        }
         VStack {
             VStack(spacing: 0) {
+                navigationBar()
                 switch selectedTab {
                 case .home:
                     TransactionsView()
@@ -45,8 +35,9 @@ struct MainTab<Content: View>: View where Content: View {
                 }
             }
             CustomTabBar(selectedTab: $selectedTab)
+                .environment(viewModel)
         }
-        .ignoresSafeArea()
+        .ignoresSafeArea(.container, edges: .bottom)
     }
 }
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CustomTabBar: View {
     
+    @Environment(TransactionsViewModel.self) var viewModel
     @Binding var selectedTab: Tab
     
     @Namespace var animation
@@ -18,8 +19,32 @@ struct CustomTabBar: View {
             TabBarButton(animation: animation, tab: .home , selectedTab: $selectedTab)
             TabBarButton(animation: animation,  tab: .subscriptions , selectedTab: $selectedTab)
             
-            Button {
-                
+//            Button {
+//                
+//            } label: {
+//                Image(systemName: "plus")
+//                    .resizable()
+//                    .renderingMode(.template)
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 15)
+//                    .foregroundStyle(.white)
+////                    .padding(10)
+//                    .padding(15)
+//                    .background(
+//                        LinearGradient(colors: purpleButton, startPoint: .bottom, endPoint: .top)
+//                            .shadow(.inner(color: .purple400, radius: 1, x: 0, y: -3))
+//                    )
+//                    .clipShape(.circle)
+//                    .overlay {
+//                        Circle()
+//                            .stroke(.purple700, lineWidth: 1)
+//                    }
+//                    .fontWeight(.bold)
+//            }
+            
+            NavigationLink {
+                AddTransaction()
+                    .environment(viewModel)
             } label: {
                 Image(systemName: "plus")
                     .resizable()
@@ -27,7 +52,6 @@ struct CustomTabBar: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 15)
                     .foregroundStyle(.white)
-//                    .padding(10)
                     .padding(15)
                     .background(
                         LinearGradient(colors: purpleButton, startPoint: .bottom, endPoint: .top)
@@ -40,12 +64,17 @@ struct CustomTabBar: View {
                     }
                     .fontWeight(.bold)
             }
+            .padding(.horizontal, 15)
+            
+
             TabBarButton(animation: animation, tab: .analytics , selectedTab: $selectedTab)
             TabBarButton(animation: animation, tab: .settings , selectedTab: $selectedTab)
         }
         .background(.white)
         .frame(maxWidth: .infinity)
-        .padding(.vertical)
+        .padding(.top, 16)
+        .padding(.bottom, 34)
+        .padding(.horizontal, 15)
 
     }
 }
@@ -80,5 +109,6 @@ struct TabBarButton: View {
     VStack {
         Spacer()
         CustomTabBar(selectedTab: .constant(.home))
+            .environment(TransactionsViewModel())
     }
 })
