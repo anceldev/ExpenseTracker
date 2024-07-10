@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "spotify.svg",
+      "filename" : "applemusic.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "spotify@2x.svg",
+      "filename" : "applemusic@2x.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "spotify@3x.svg",
+      "filename" : "applemusic@3x.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

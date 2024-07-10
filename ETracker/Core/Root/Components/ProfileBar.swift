@@ -34,36 +34,29 @@ struct ProfileBar: View {
                 .fontWeight(.semibold)
                 
             Spacer()
-            Menu {
+            HStack(spacing: 15){
                 NavigationLink {
-                    SettingsView()
-                        .environmentObject(viewModel)
+                    NotificationsView()
                 } label: {
-                    Text("Settings")
+                    Label("Notifications", systemImage: "bell")
+                        .labelStyle(.iconOnly)
+                        .font(.system(size: 20, weight: .regular))
+                        .foregroundStyle(.gray900)
                 }
-            } label: {
-                Image(systemName: "gear")
-                    .font(.system(size: 20, weight: .regular))
-                    .foregroundStyle(.gray900)
+                
+                Menu {
+                    NavigationLink {
+                        SettingsView()
+                            .environmentObject(viewModel)
+                    } label: {
+                        Text("Settings")
+                    }
+                } label: {
+                    Image(systemName: "gear")
+                        .font(.system(size: 20, weight: .regular))
+                        .foregroundStyle(.gray900)
+                }
             }
-
-//            Button(action: {
-//                
-//            }, label: {
-//                VStack {
-//                    Image(systemName: "ellipsis")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 20)
-//                        .rotationEffect(.degrees(90))
-//                }
-//                .frame(width: 40, height: 40)
-//                .background(.gray200)
-//                .clipShape(Circle())
-//                
-//            })
-//            .foregroundStyle(.black)
-
         }
         .fontDesign(.rounded)
         .padding(16)
@@ -73,4 +66,5 @@ struct ProfileBar: View {
 
 #Preview(traits: .sizeThatFitsLayout, body: {
     ProfileBar()
+        .environmentObject(AuthenticationViewModel())
 })

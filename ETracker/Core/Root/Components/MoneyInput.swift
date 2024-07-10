@@ -28,6 +28,7 @@ struct MoneyInput<InputField: View>: View where InputField: View {
                     .font(.system(size: 26, weight: .semibold, design: .rounded))
                     .fixedSize()
                     .padding(.leading, 19)
+                    .keyboardType(.decimalPad)
                 VerticalDivider()
                 Text("$")
                     .font(.system(size: 28, weight: .bold, design: .rounded))

@@ -8,15 +8,22 @@
 import SwiftUI
 
 struct SubscriptionsView: View {
+    
+    @Environment(SubscriptionsViewModel.self) var viewModel
+    
     var body: some View {
         VStack {
             Spacer()
             Text("Subscriptions View")
-                Spacer()
+
+            Spacer()
         }
     }
 }
 
 #Preview {
-    SubscriptionsView()
+    NavigationStack {
+        SubscriptionsView()
+            .environment(SubscriptionsViewModel())
+    }
 }

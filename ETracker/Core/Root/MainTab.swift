@@ -11,7 +11,10 @@ struct MainTab<Content: View>: View where Content: View {
     
     @ViewBuilder var navigationBar: () -> Content
     @EnvironmentObject var authViewModel: AuthenticationViewModel
+
     @State private var viewModel = TransactionsViewModel()
+    @State private var subsViewModel = SubscriptionsViewModel()
+
     @State var selectedTab: Tab = .home
     
     init(@ViewBuilder content: @escaping () -> Content) {
@@ -29,15 +32,17 @@ struct MainTab<Content: View>: View where Content: View {
                         .environment(viewModel)
                 case .subscriptions:
                     SubscriptionsView()
+                        .environment(subsViewModel)
                 case .analytics:
                     AnalyticsView()
                 case .settings:
                     AccountView()
                         .environmentObject(authViewModel)
                 }
+                CustomTabBar(selectedTab: $selectedTab)
+                    .environment(viewModel)
+                    .environment(subsViewModel)
             }
-            CustomTabBar(selectedTab: $selectedTab)
-                .environment(viewModel)
         }
         .ignoresSafeArea(.container, edges: .bottom)
     }

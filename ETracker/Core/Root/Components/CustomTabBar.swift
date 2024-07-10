@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomTabBar: View {
     
     @Environment(TransactionsViewModel.self) var viewModel
+    @Environment(SubscriptionsViewModel.self) var subsViewModel
     @Binding var selectedTab: Tab
     
     @Namespace var animation
@@ -18,33 +19,19 @@ struct CustomTabBar: View {
         HStack(spacing: 0) {
             TabBarButton(animation: animation, tab: .home , selectedTab: $selectedTab)
             TabBarButton(animation: animation,  tab: .subscriptions , selectedTab: $selectedTab)
-            
-//            Button {
-//                
-//            } label: {
-//                Image(systemName: "plus")
-//                    .resizable()
-//                    .renderingMode(.template)
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 15)
-//                    .foregroundStyle(.white)
-////                    .padding(10)
-//                    .padding(15)
-//                    .background(
-//                        LinearGradient(colors: purpleButton, startPoint: .bottom, endPoint: .top)
-//                            .shadow(.inner(color: .purple400, radius: 1, x: 0, y: -3))
-//                    )
-//                    .clipShape(.circle)
-//                    .overlay {
-//                        Circle()
-//                            .stroke(.purple700, lineWidth: 1)
-//                    }
-//                    .fontWeight(.bold)
-//            }
-            
             NavigationLink {
-                AddTransaction()
-                    .environment(viewModel)
+                switch selectedTab {
+                case .home:
+                    AddTransaction()
+                        .environment(viewModel)
+                case .subscriptions:
+                    AddSubscription()
+                        .environment(subsViewModel)
+                default:
+                    Text("Invalid selection")
+                }
+//                AddTransaction()
+//                    .environment(viewModel)
             } label: {
                 Image(systemName: "plus")
                     .resizable()
@@ -65,17 +52,21 @@ struct CustomTabBar: View {
                     .fontWeight(.bold)
             }
             .padding(.horizontal, 15)
+            .disabled(selectedTab == .analytics || selectedTab == .settings)
             
-
+            
             TabBarButton(animation: animation, tab: .analytics , selectedTab: $selectedTab)
             TabBarButton(animation: animation, tab: .settings , selectedTab: $selectedTab)
         }
-        .background(.white)
         .frame(maxWidth: .infinity)
         .padding(.top, 16)
         .padding(.bottom, 34)
         .padding(.horizontal, 15)
-
+        .background(
+            .white
+//                .shadow(.inner(color: .gray200.opacity(0.5), radius: 2, x: 0, y: 3))
+        )
+        .shadow(color: .gray100, radius: 1, x: 0, y: -3)
     }
 }
 
@@ -97,18 +88,16 @@ struct TabBarButton: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 28)
                     .foregroundStyle(self.selectedTab == tab ? .purple700.opacity(0.7) : .gray )
-
+                
             }
             .frame(maxWidth: .infinity)
         }
-
+        
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout, body: {
-    VStack {
-        Spacer()
-        CustomTabBar(selectedTab: .constant(.home))
-            .environment(TransactionsViewModel())
-    }
+    CustomTabBar(selectedTab: .constant(.home))
+        .environment(TransactionsViewModel())
+        .environment(SubscriptionsViewModel())
 })

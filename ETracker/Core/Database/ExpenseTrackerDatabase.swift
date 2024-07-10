@@ -29,7 +29,7 @@ protocol ExpenseTrackerDatabaseProtocol {
     
     func insertSubscription(newSubscription: Subscription) throws
     func fetchAllSubscriptions() throws -> [Subscription]
-    func updateSubscription(id: UUID, service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, serviceLogo: Data?, notification: SubNotification) throws
+    func updateSubscription(id: UUID, service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws
     func removeSubscription(id: UUID) throws
 }
 
@@ -228,7 +228,7 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
         []
     }
     
-    func updateSubscription(id: UUID, service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, serviceLogo: Data?, notification: SubNotification) throws {
+    func updateSubscription(id: UUID, service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws {
         
     }
     
