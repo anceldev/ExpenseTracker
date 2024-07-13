@@ -10,14 +10,23 @@ import SwiftUI
 struct DateInput: View {
     
 //    @Binding var showPicker: Bool
+    let title: String?
     @Binding var showPicker: SheetEnum?
     var timestamp: Date?
+    
+    init(title: String? = nil, showPicker: Binding<SheetEnum?>, timestamp: Date? = nil) {
+        self.title = title
+        self._showPicker = showPicker
+        self.timestamp = timestamp
+    }
     
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Date")
-                .font(.system(size: 18, weight: .bold, design: .rounded))
+            if let title = title {
+                Text(title)
+                    .font(.system(size: 18, weight: .bold, design: .rounded))
+            }
             HStack(spacing: 20) {
                 VStack {
                     Button(action: {
@@ -54,8 +63,8 @@ struct DateInput: View {
 
 #Preview(traits: .sizeThatFitsLayout, body: {
     VStack(spacing: 16) {
-        DateInput(showPicker: .constant(.datePicker))
-        DateInput(showPicker: .constant(nil), timestamp: .now)
+        DateInput(title: "Test Date", showPicker: .constant(.datePicker))
+        DateInput(title: "Test Date 2", showPicker: .constant(nil), timestamp: .now)
     }
     .padding()
 })

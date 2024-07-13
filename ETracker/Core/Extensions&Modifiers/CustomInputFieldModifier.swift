@@ -13,7 +13,8 @@ struct CustomInputFieldModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .frame(height: 58)
+//            .frame(height: 58)
+            .frame(height: 53)
             .frame(maxWidth: width, alignment: .center)
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .overlay {

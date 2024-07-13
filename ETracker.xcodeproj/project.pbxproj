@@ -84,6 +84,7 @@
 		B4D8554F2C3EE58900E0AD4B /* RemoveSubscriptionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D8554E2C3EE58900E0AD4B /* RemoveSubscriptionUseCase.swift */; };
 		B4D855512C3EE9E000E0AD4B /* AddSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D855502C3EE9E000E0AD4B /* AddSubscription.swift */; };
 		B4D855552C3EF94700E0AD4B /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D855542C3EF94700E0AD4B /* NotificationsView.swift */; };
+		B4D9AFD92C4270E7002DF9A6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D9AFD82C4270E7002DF9A6 /* Toast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +164,7 @@
 		B4D8554E2C3EE58900E0AD4B /* RemoveSubscriptionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSubscriptionUseCase.swift; sourceTree = "<group>"; };
 		B4D855502C3EE9E000E0AD4B /* AddSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscription.swift; sourceTree = "<group>"; };
 		B4D855542C3EF94700E0AD4B /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		B4D9AFD82C4270E7002DF9A6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -496,6 +498,7 @@
 				B4BC51242C3ED306009026B4 /* RoundedButton.swift */,
 				B47A9C9E2C2F2784003B0A26 /* RoundedIcon.swift */,
 				B47163272C299C7A0030CE5B /* VerticalDivider.swift */,
+				B4D9AFD82C4270E7002DF9A6 /* Toast.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				B471631B2C298F710030CE5B /* Subscription.swift in Sources */,
 				B471634C2C29E6800030CE5B /* UpdateTransactionUseCase.swift in Sources */,
 				B4BDD1EE2C2C0794005934AD /* ImageInput.swift in Sources */,
+				B4D9AFD92C4270E7002DF9A6 /* Toast.swift in Sources */,
 				B4969D972C341949004EF398 /* Tab.swift in Sources */,
 				B471632C2C29A2250030CE5B /* CustomInputField.swift in Sources */,
 				B4BDD1FF2C2C3B3E005934AD /* RemoveCategoryUseCase.swift in Sources */,

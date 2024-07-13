@@ -8,28 +8,20 @@
 import SwiftUI
 
 struct TestView: View {
-    /// View Properties
-    @State private var selection: String?
-    @State private var selection1: String?
-    @State private var selection2: String?
     
-    var viewModel = CategoriesViewModel()
-    @State var selectedCategory: TransactionCategory? = nil
+    @State private var showToast = true
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 15) {
-                CategoryPicker(
-                    hint: "Select",
-                    anchor: .top,
-                    viewModel: viewModel,
-                    selectedCategory: $selectedCategory
-                )
-                Button("I'm Button") {
-                    
+        VStack {
+            Button("Show toast") {
+                withAnimation {
+                    showToast.toggle()
                 }
             }
-            .navigationTitle("Dropdown Picker")
+        }
+        .toast(isShowing: $showToast) {
+            Text("Transaction Added")
         }
     }
 }

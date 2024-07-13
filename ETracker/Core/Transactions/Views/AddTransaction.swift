@@ -44,6 +44,8 @@ struct AddTransaction: View {
     @State var imageReceipt = UIImage()
     @State var receiptEnum: ReceiptEnum? = nil
     
+    @State var showToast = false
+    
     
 //    init(viewModel: TransactionsViewModel) {
 //        self.viewModel = viewModel
@@ -75,19 +77,20 @@ struct AddTransaction: View {
                     MoneyInput(title: "Amount", amount: amount) {
                         TextField("", value: $amount, formatter: NumberFormatter.moneyFormatter)
                     }
-                    DateInput(showPicker: $selectedSheet, timestamp: timestamp)
+                    DateInput(title: "Date", showPicker: $selectedSheet, timestamp: timestamp)
                     ImageInput(receiptEnum: $receiptEnum, receiptPicker: $selectedSheet)
                         .frame(minHeight: 92)
                     CategoryPicker(hint: "Select", anchor: .top, viewModel: categoriesViewModel, selectedCategory: $selectedCategory)
                 
                 }
             }
-//            Spacer()
             VStack {
                 Button(action: {
                     print("Adding category...")
                     viewModel.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: selectedCategory!, timestamp: timestamp, receipt: receiptEnum == nil ? nil : imageReceipt)
-                    dismiss()
+                    withAnimation {
+                        showToast.toggle()                        
+                    }
                 }, label: {
                     Text("Add Transaction")
                 })
@@ -114,6 +117,9 @@ struct AddTransaction: View {
             case .datePicker:
                 CustomNilDatePicker(title: "Transaction Date", pickedDate: $timestamp)
             }
+        }
+        .toast(isShowing: $showToast) {
+            Text("¡Transaction Added!")
         }
     }
 }

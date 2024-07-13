@@ -78,28 +78,18 @@ struct CategoryPicker: View {
                         }
                         .padding(.trailing, 19)
                     }
-                    .frame(width: size.width, height: 60)
+                    .frame(width: size.width, height: 53)
                     .background(.white)
-                    
-                    //                if showOptions && anchor == .bottom {
-                    //                    OptionsView()
-                    //                }
                 }
                 .clipped()
-                /// Clips All Interaction within it's bounds
                 .clipShape(RoundedRectangle(cornerRadius: 18))
-//                .background(
-//                    RoundedRectangle(cornerRadius: 18)
-//                        .stroke(.gray300, lineWidth: 1)
-//                )
                 .overlay {
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(.gray300, lineWidth: 1)
                 }
                 .frame(height: size.height, alignment: anchor == .top ? .bottom : .top)
             }
-            .frame(width: .infinity, height: 60)
-//                    .zIndex(zIndex)
+            .frame(width: .infinity, height: 53)
         }
     }
     

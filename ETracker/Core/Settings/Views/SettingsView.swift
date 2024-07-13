@@ -12,6 +12,7 @@ struct SettingsView: View {
         VStack {
             Spacer()
             Text("Settings View")
+            TestView()
             Spacer()
         }
     }
