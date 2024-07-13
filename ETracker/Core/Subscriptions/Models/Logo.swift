@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension Subscription {
+extension ETSubscription {
     enum Logo: String, Codable, CaseIterable, Identifiable {
         case applemusic = "Apple Music"
         case disneyplus = "Disney Plus"

@@ -27,9 +27,9 @@ protocol ExpenseTrackerDatabaseProtocol {
     func updateCategory(id: UUID, name: String, icon: TransactionCategory.Icon, hexColor: String) throws
     func removeCategory(id: UUID) throws
     
-    func insertSubscription(newSubscription: Subscription) throws
-    func fetchAllSubscriptions() throws -> [Subscription]
-    func updateSubscription(id: UUID, service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws
+    func insertSubscription(newSubscription: ETSubscription) throws
+    func fetchAllSubscriptions() throws -> [ETSubscription]
+    func updateSubscription(id: UUID, service: String, amount: Double, billing: ETSubscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws
     func removeSubscription(id: UUID) throws
 }
 
@@ -49,7 +49,7 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
         @AppStorage("sampleDataAdded") var sampleDataAdded: Bool = false
         
         do {
-            let schema = Schema([Transaction.self, TransactionCategory.self, Subscription.self, SubNotification.self])
+            let schema = Schema([Transaction.self, TransactionCategory.self, ETSubscription.self, SubNotification.self])
             let config = ModelConfiguration(isStoredInMemoryOnly: inMemory, allowsSave: true)
             
             var cont: ModelContainer!
@@ -220,19 +220,65 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
         }
     }
     
-    func insertSubscription(newSubscription: Subscription) throws {
+    @MainActor
+    func insertSubscription(newSubscription: ETSubscription) throws {
+        do {
+            container.mainContext.insert(newSubscription)
+            try container.mainContext.save()
+        } catch {
+            print("DEBUG - Error: Can't add new subscription \(error.localizedDescription)")
+            throw DatabaseError.errorInsert
+        }
+    }
+    @MainActor
+    func fetchAllSubscriptions() throws -> [ETSubscription] {
+        let fetchDescriptor = FetchDescriptor<ETSubscription>(sortBy: [SortDescriptor<ETSubscription>(\.service)])
+        do {
+            let subscriptions = try container.mainContext.fetch(fetchDescriptor)
+            return subscriptions
+        } catch {
+            print("DEBUG - Error: Can't fetch all subscriptions \(error.localizedDescription)")
+            throw DatabaseError.errorFetch
+        }
+    }
+    @MainActor
+    func updateSubscription(id: UUID, service: String, amount: Double, billing: ETSubscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws {
+        let subscriptionPredicate = #Predicate<ETSubscription> { $0.id == id }
+        var fetchDescriptor = FetchDescriptor<ETSubscription>(predicate: subscriptionPredicate)
+        fetchDescriptor.fetchLimit = 1
         
+        do {
+            guard let updateSubscription = try container.mainContext.fetch(fetchDescriptor).first else {
+                throw DatabaseError.errorFetch
+            }
+            updateSubscription.service = service
+            updateSubscription.amount = amount
+            updateSubscription.billing = billing
+            updateSubscription.chargeDate = chargeDate
+            updateSubscription.active = active
+            updateSubscription.notification = notification
+            updateSubscription.serviceLogo = serviceLogo
+            
+            try container.mainContext.save()
+        } catch {
+            print("DEBUG - Error: Can't update subscription \(error.localizedDescription)")
+            throw DatabaseError.errorUpdate
+        }
     }
-    
-    func fetchAllSubscriptions() throws -> [Subscription] {
-        []
-    }
-    
-    func updateSubscription(id: UUID, service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws {
-        
-    }
-    
+    @MainActor
     func removeSubscription(id: UUID) throws {
+        let subscriptionPredicate = #Predicate<ETSubscription> { $0.id == id }
+        var fetchDescriptor = FetchDescriptor<ETSubscription>(predicate: subscriptionPredicate)
+        fetchDescriptor.fetchLimit = 1
         
+        do {
+            guard let deleteSubscription = try container.mainContext.fetch(fetchDescriptor).first else {
+                throw DatabaseError.errorFetch
+            }
+            container.mainContext.delete(deleteSubscription)
+        } catch  {
+            print("DEBUG - Error: Can't remove subscription \(error.localizedDescription)")
+            throw DatabaseError.errorRemove
+        }
     }
 }

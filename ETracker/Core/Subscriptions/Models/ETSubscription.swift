@@ -1,5 +1,5 @@
 //
-//  Subscription.swift
+//  ETSubscription.swift
 //  ETracker
 //
 //  Created by Ancel Dev account on 24/6/24.
@@ -9,15 +9,15 @@ import Foundation
 import SwiftData
 
 @Model
-final public class Subscription: Identifiable {
+final public class ETSubscription: Identifiable {
     @Attribute(.unique) public let id: UUID
-    let service: String
-    let amount: Double
-    let billing: Billing
-    let chargeDate: Date?
-    let active: Bool
-    let notification: SubNotification?
-    @Attribute(.externalStorage) let serviceLogo: Data?
+    var service: String
+    var amount: Double
+    var billing: Billing
+    var chargeDate: Date?
+    var active: Bool
+    var notification: SubNotification?
+    @Attribute(.externalStorage) var serviceLogo: Data?
     
     init(
         id: UUID = UUID(),
@@ -51,7 +51,7 @@ final public class Subscription: Identifiable {
     }
 }
 
-extension Subscription {
+extension ETSubscription {
     enum Billing: String, Codable, Identifiable, CaseIterable {
         case weekly = "Weekly"
         case monthly = "Monthly"

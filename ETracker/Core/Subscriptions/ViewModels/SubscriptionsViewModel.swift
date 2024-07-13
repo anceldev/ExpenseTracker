@@ -10,13 +10,13 @@ import Observation
 import SwiftUI
 
 protocol SubscriptionsViewModelProtocol {
-    var subscriptions: [Subscription] { get set }
+    var subscriptions: [ETSubscription] { get set }
     var databaseError: DatabaseError? { get set }
 }
 
 @Observable
 public class SubscriptionsViewModel: SubscriptionsViewModelProtocol {
-    var subscriptions: [Subscription]
+    var subscriptions: [ETSubscription]
     var databaseError: DatabaseError?
     
     private var createSubscriptionUseCase: CreateSubscriptionProtocol
@@ -25,7 +25,7 @@ public class SubscriptionsViewModel: SubscriptionsViewModelProtocol {
     private var removeSubscriptionUseCase: RemoveSubscriptionProtocol
     
     init(
-        subscriptions: [Subscription] = [],
+        subscriptions: [ETSubscription] = [],
         createSubscriptionUseCase: CreateSubscriptionProtocol = CreateSubscriptionUseCase(),
         fetchAllSubscriptionsUseCase: FetchAllSubscriptionsProtocol = FetchAllSubscriptionsUseCase(),
         updateSubscriptionsUseCase: UpdateSubscriptionProtocol = UpdateSubscriptionUseCase(),
@@ -39,7 +39,7 @@ public class SubscriptionsViewModel: SubscriptionsViewModelProtocol {
         fetchSubscriptions()
     }
     
-    func createSubscription(service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) {
+    func createSubscription(service: String, amount: Double, billing: ETSubscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) {
         do {
             /// Need to implemente receipt logo
             try createSubscriptionUseCase.createSubscription(
@@ -56,7 +56,7 @@ public class SubscriptionsViewModel: SubscriptionsViewModelProtocol {
             print("DEBUG - Error: Error updating subscriptions \(error.localizedDescription)")
         }
     }
-    func updateSubscription(id: UUID, service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) {
+    func updateSubscription(id: UUID, service: String, amount: Double, billing: ETSubscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) {
         do {
             try updateSubscriptionsUseCase.updateSubscription(
                 id: id,

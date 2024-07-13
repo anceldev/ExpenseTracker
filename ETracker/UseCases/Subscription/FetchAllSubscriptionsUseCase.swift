@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FetchAllSubscriptionsProtocol {
-    func fetchAll() throws -> [Subscription]
+    func fetchAll() throws -> [ETSubscription]
 }
 
 struct FetchAllSubscriptionsUseCase: FetchAllSubscriptionsProtocol {
@@ -18,7 +18,7 @@ struct FetchAllSubscriptionsUseCase: FetchAllSubscriptionsProtocol {
         self.database = database
     }
     
-    func fetchAll() throws -> [Subscription] {
+    func fetchAll() throws -> [ETSubscription] {
         try database.fetchAllSubscriptions()
     }
 }

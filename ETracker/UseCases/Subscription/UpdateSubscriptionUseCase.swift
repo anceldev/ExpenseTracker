@@ -8,7 +8,7 @@
 import Foundation
 
 protocol UpdateSubscriptionProtocol {
-    func updateSubscription(id: UUID, service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws
+    func updateSubscription(id: UUID, service: String, amount: Double, billing: ETSubscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws
 }
 
 struct UpdateSubscriptionUseCase: UpdateSubscriptionProtocol {
@@ -18,7 +18,7 @@ struct UpdateSubscriptionUseCase: UpdateSubscriptionProtocol {
         self.database = database
     }
     
-    func updateSubscription(id: UUID, service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws {
+    func updateSubscription(id: UUID, service: String, amount: Double, billing: ETSubscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws {
         
         try database.updateSubscription(
             id: id,

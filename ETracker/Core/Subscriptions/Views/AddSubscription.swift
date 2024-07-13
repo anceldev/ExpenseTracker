@@ -13,7 +13,7 @@ struct AddSubscription: View {
     
     @State var service = ""
     @State var amount: Double = 0.0
-    @State var billing: Subscription.Billing = .monthly
+    @State var billing: ETSubscription.Billing = .monthly
     @State var chargeDate: Date = .now
     @State var activeSubscription = false
     @State var activeNotification = false
@@ -43,7 +43,7 @@ struct AddSubscription: View {
                         Text("Billing")
                             .font(.system(size: 18, weight: .bold, design: .rounded))
                         Picker("Billing", selection: $billing) {
-                            ForEach(Subscription.Billing.allCases) { type in
+                            ForEach(ETSubscription.Billing.allCases) { type in
                                 Text(type.rawValue)
                                     .tag(type)
                             }

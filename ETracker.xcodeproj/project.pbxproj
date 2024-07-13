@@ -28,7 +28,7 @@
 		B47163152C298F2B0030CE5B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163142C298F2B0030CE5B /* Category.swift */; };
 		B47163172C298F450030CE5B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163162C298F450030CE5B /* Icon.swift */; };
 		B47163192C298F530030CE5B /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163182C298F530030CE5B /* HexColor.swift */; };
-		B471631B2C298F710030CE5B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631A2C298F710030CE5B /* Subscription.swift */; };
+		B471631B2C298F710030CE5B /* ETSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631A2C298F710030CE5B /* ETSubscription.swift */; };
 		B471631D2C298F980030CE5B /* SubNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631C2C298F980030CE5B /* SubNotification.swift */; };
 		B471631F2C2992920030CE5B /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631E2C2992920030CE5B /* MainTab.swift */; };
 		B47163212C2993580030CE5B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163202C2993580030CE5B /* SignInView.swift */; };
@@ -108,7 +108,7 @@
 		B47163142C298F2B0030CE5B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B47163162C298F450030CE5B /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		B47163182C298F530030CE5B /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
-		B471631A2C298F710030CE5B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		B471631A2C298F710030CE5B /* ETSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETSubscription.swift; sourceTree = "<group>"; };
 		B471631C2C298F980030CE5B /* SubNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubNotification.swift; sourceTree = "<group>"; };
 		B471631E2C2992920030CE5B /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		B47163202C2993580030CE5B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -441,7 +441,7 @@
 		B47163062C298C0E0030CE5B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B471631A2C298F710030CE5B /* Subscription.swift */,
+				B471631A2C298F710030CE5B /* ETSubscription.swift */,
 				B471631C2C298F980030CE5B /* SubNotification.swift */,
 				B4D855432C3EE23500E0AD4B /* Logo.swift */,
 			);
@@ -701,7 +701,7 @@
 				B457611D2C2ADEEA00832CAE /* AddTransaction.swift in Sources */,
 				B4D855512C3EE9E000E0AD4B /* AddSubscription.swift in Sources */,
 				B4D8554D2C3EE4FB00E0AD4B /* UpdateSubscriptionUseCase.swift in Sources */,
-				B471631B2C298F710030CE5B /* Subscription.swift in Sources */,
+				B471631B2C298F710030CE5B /* ETSubscription.swift in Sources */,
 				B471634C2C29E6800030CE5B /* UpdateTransactionUseCase.swift in Sources */,
 				B4BDD1EE2C2C0794005934AD /* ImageInput.swift in Sources */,
 				B4D9AFD92C4270E7002DF9A6 /* Toast.swift in Sources */,

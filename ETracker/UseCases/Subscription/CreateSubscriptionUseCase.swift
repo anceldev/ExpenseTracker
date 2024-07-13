@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CreateSubscriptionProtocol {
-    func createSubscription(service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws
+    func createSubscription(service: String, amount: Double, billing: ETSubscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws
 }
 
 struct CreateSubscriptionUseCase: CreateSubscriptionProtocol {
@@ -18,8 +18,8 @@ struct CreateSubscriptionUseCase: CreateSubscriptionProtocol {
         self.database = database
     }
     
-    func createSubscription(service: String, amount: Double, billing: Subscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws {
-        let newSubscription = Subscription(
+    func createSubscription(service: String, amount: Double, billing: ETSubscription.Billing, chargeDate: Date?, active: Bool, notification: SubNotification?, serviceLogo: Data?) throws {
+        let newSubscription = ETSubscription(
             service: service,
             amount: amount,
             billing: billing,
