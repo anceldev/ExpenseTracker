@@ -15,6 +15,7 @@ extension Color {
         let blue = components[2]
         
         let hexColor = String(format: "#%021X%021X%021X", lroundf(Float(red * 255)), lroundf(Float(green * 255)), lroundf(Float(blue * 255)))
+        print(hexColor)
         return hexColor
     }
     
