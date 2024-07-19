@@ -14,12 +14,12 @@ struct CustomInputFieldModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
 //            .frame(height: 58)
-            .frame(height: 53)
+            .frame(height: 51)
             .frame(maxWidth: width, alignment: .center)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .clipShape(RoundedRectangle(cornerRadius: 13))
             .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(.gray300, lineWidth: 1)
+                RoundedRectangle(cornerRadius: 13)
+                    .stroke(.gray400.opacity(0.6), lineWidth: 2)
             }
     }
 }
@@ -28,4 +28,9 @@ extension View {
     func customInputField(_ width: CGFloat) -> some View {
         modifier(CustomInputFieldModifier(width: width))
     }
+}
+
+#Preview {
+    TextField("Text", text: .constant("Enter text"))
+        .customInputField(.infinity)
 }

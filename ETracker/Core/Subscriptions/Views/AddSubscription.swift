@@ -21,7 +21,7 @@ struct AddSubscription: View {
     @State var chargeDateSheet: SheetEnum?
     
     init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = .purple600
+        UISegmentedControl.appearance().selectedSegmentTintColor = .iris600
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor:UIColor.white], for: .selected)
     }
     
@@ -33,8 +33,8 @@ struct AddSubscription: View {
             }
             ScrollView(.vertical) {
                 VStack(spacing: 12, content: {
-                    CustomInputField(title: "Service", text: service, imageName: "cheapdollar", autoCorrectionDisabled: false) {
-                        TextField("Type", text: $service)
+                    CustomInputField(title: "Service", text: service, autoCorrectionDisabled: false) {
+                        TextField("Type subscription", text: $service)
                     }
                     MoneyInput(title: "Amount", amount: amount) {
                         TextField("", value: $amount, formatter: NumberFormatter.moneyFormatter)
@@ -57,7 +57,7 @@ struct AddSubscription: View {
                         Spacer(minLength: 0)
                         Toggle("Is active?", isOn: $activeSubscription)
                             .labelsHidden()
-                            .tint(.purple400)
+                            .tint(.iris700)
                     }
                     .padding(.trailing, 5)
                     VStack(alignment: .leading) {
@@ -68,7 +68,7 @@ struct AddSubscription: View {
                             Spacer(minLength: 0)
                             Toggle("Notification On", isOn: $activeNotification)
                                 .labelsHidden()
-                                .tint(.purple400)
+                                .tint(.iris700)
                         }
                         .padding(.trailing, 5)
                     }

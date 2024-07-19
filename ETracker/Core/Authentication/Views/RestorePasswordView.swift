@@ -16,7 +16,7 @@ struct RestorePasswordView: View {
         VStack(alignment: .leading, spacing: 40, content: {
             Text("Restore\nPassword")
                 .font(.system(size: 32, weight: .bold, design: .rounded))
-                .foregroundStyle(.purple700)
+                .foregroundStyle(.iris600)
                 .frame(maxWidth: .infinity, alignment: .leading)
             VStack(spacing: 20, content: {
                 VStack(alignment: .leading, content: {
@@ -32,7 +32,7 @@ struct RestorePasswordView: View {
             })
             VStack(alignment: .center) {
                 Text("You'll receive an email to recover\nyour password.")
-                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                    .font(.system(size: 16, weight: .medium, design: .rounded))
                     .lineLimit(2, reservesSpace: true)
                     .multilineTextAlignment(.center)
             }
@@ -43,7 +43,7 @@ struct RestorePasswordView: View {
             }, label: {
                 Text("Send Email")
             })
-            .buttonStyle(.mainButton(purpleButton, stroke: .purple700, shadow: .purple400))
+            .buttonStyle(.mainButton())
             
             VStack(alignment: .center) {
                 HStack(alignment: .center, spacing: 8) {
@@ -54,7 +54,7 @@ struct RestorePasswordView: View {
                         }
                     }, label: {
                         Text("Sign In.")
-                            .foregroundStyle(.purple700)
+                            .foregroundStyle(.iris600)
                             .fontWeight(.bold)
                     })
                 }

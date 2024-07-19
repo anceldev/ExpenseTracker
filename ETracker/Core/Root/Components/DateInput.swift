@@ -37,7 +37,7 @@ struct DateInput: View {
                         Image("calendarclock")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(timestamp != nil ? .purple400 : .black)
+                            .foregroundStyle(timestamp != nil ? .iris500 : .black)
                     })
                 }
                 .frame(width: 26)
@@ -48,7 +48,7 @@ struct DateInput: View {
                 if let date = timestamp {
                     Text(date, style: .date)
                         .font(.system(size: 18, weight: .bold, design: .rounded))
-                        .foregroundStyle(.purple400)
+                        .foregroundStyle(.iris600)
                     
                 } else {
                     Text("Select date")

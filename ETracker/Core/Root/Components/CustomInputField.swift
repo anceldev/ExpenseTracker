@@ -11,12 +11,12 @@ struct CustomInputField<InputField: View>: View where InputField: View {
     
     let title: String
     let text: String
-    let imageName: String
+    let imageName: String?
     let autoCorrectionDisabled: Bool
     @ViewBuilder var inputField: () -> InputField
     
 
-    init(title: String, text: String, imageName: String, autoCorrectionDisabled: Bool, @ViewBuilder inputField: @escaping () -> InputField) {
+    init(title: String, text: String, imageName: String? = nil, autoCorrectionDisabled: Bool, @ViewBuilder inputField: @escaping () -> InputField) {
         self.title = title
         self.text = text
         self.imageName = imageName
@@ -27,22 +27,24 @@ struct CustomInputField<InputField: View>: View where InputField: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .font(.system(size: 18, weight: .bold, design: .rounded))
-            HStack(spacing: 16) {
-                VStack {
-                    Image(imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundStyle(text.count >= 3 ? .purple400 : .black)
+                .font(.system(size: 14, weight: .medium, design: .rounded))
+                .foregroundStyle(.gray600)
+            HStack {
+                if let image = imageName {
+                    VStack {
+                        Image(image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 24)
+                            .foregroundStyle(text.count >= 3 ? .iris500 : .gray500.opacity(0.85))
+                    }
+                    .frame(width: 26)
+                    .padding(.leading, 18)
                 }
-                .frame(width: 26)
-                .padding(.leading, 19)
-                
-                VerticalDivider()
-                
                 inputField()
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .font(.system(size: 16, weight: .medium, design: .rounded))
                     .autocorrectionDisabled(autoCorrectionDisabled)
+                    .padding(.leading, 18)
                 Spacer()
             }
             .customInputField(.infinity)
@@ -53,7 +55,16 @@ struct CustomInputField<InputField: View>: View where InputField: View {
 #Preview {
     VStack {
         CustomInputField(title: "Email", text: "Email", imageName: "user", autoCorrectionDisabled: true) {
-            TextField("", text: .constant(""))
+//            TextField("", text: .constant(""))
+            TextField("Email", text: .constant(""), prompt: Text("Enter email"))
+        }
+        CustomInputField(title: "Password", text: "Enter Password", imageName: "key" , autoCorrectionDisabled: true) {
+            SecureField("Password", text: .constant(""))
+        }
+        
+        CustomInputField(title: "Password", text: "Enter Password", autoCorrectionDisabled: true) {
+            SecureField("Password", text: .constant(""))
         }
     }
+    .padding()
 }

@@ -22,7 +22,7 @@ struct AccountView: View {
             }, label: {
                 Text("Sign Out")
             })
-            .buttonStyle(.mainButton(redButton, stroke: Color(hex:"#ff1605"), shadow: Color(hex: "#fe4010")))
+            .buttonStyle(.mainButton(.cancel))
         }
         .padding()
     }

@@ -22,7 +22,7 @@ enum ReceiptEnum: Identifiable, Hashable {
 }
 
 struct AddTransaction: View {
- 
+    
     @Environment(\.dismiss) private var dismiss
     @Environment(TransactionsViewModel.self) var viewModel
     var categoriesViewModel = CategoriesViewModel()
@@ -36,7 +36,7 @@ struct AddTransaction: View {
     @State var selectedCategory: TransactionCategory? = nil
     
     @State var showDatePicker = false
-//    @State var showReceiptButtons = false
+    //    @State var showReceiptButtons = false
     
     @State var selectedSheet: SheetEnum?
     @State var showReceiptPicker: Bool = false
@@ -47,8 +47,8 @@ struct AddTransaction: View {
     @State var showToast = false
     
     
-//    init(viewModel: TransactionsViewModel) {
-//        self.viewModel = viewModel
+    //    init(viewModel: TransactionsViewModel) {
+    //        self.viewModel = viewModel
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = .purple600
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor:UIColor.white], for: .selected)
@@ -71,8 +71,8 @@ struct AddTransaction: View {
             }
             ScrollView(.vertical) {
                 VStack(spacing: 12) {
-                    CustomInputField(title: "Concept", text: concept, imageName: "cheapdollar", autoCorrectionDisabled: false) {
-                        TextField("Concept", text: $concept)
+                    CustomInputField(title: "Concept", text: concept, autoCorrectionDisabled: false) {
+                        TextField("Type concept", text: $concept)
                     }
                     MoneyInput(title: "Amount", amount: amount) {
                         TextField("", value: $amount, formatter: NumberFormatter.moneyFormatter)
@@ -81,7 +81,7 @@ struct AddTransaction: View {
                     ImageInput(receiptEnum: $receiptEnum, receiptPicker: $selectedSheet)
                         .frame(minHeight: 92)
                     CategoryPicker(hint: "Select", anchor: .top, viewModel: categoriesViewModel, selectedCategory: $selectedCategory)
-                
+                    
                 }
             }
             VStack {
@@ -89,25 +89,24 @@ struct AddTransaction: View {
                     print("Adding category...")
                     viewModel.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: selectedCategory!, timestamp: timestamp, receipt: receiptEnum == nil ? nil : imageReceipt)
                     withAnimation {
-                        showToast.toggle()                        
+                        showToast.toggle()
                     }
                 }, label: {
                     Text("Add Transaction")
                 })
-                .buttonStyle(.mainButton(purpleButton, stroke: .purple700, shadow: .purple400))
+                .buttonStyle(.mainButton())
                 .disabled(selectedCategory == nil)
                 
-            Button(action: {
-                print("Canceling new transaction")
-                dismiss()
-            }, label: {
-                Text("Cancel")
-            })
-            .buttonStyle(.mainButton)
+                Button(action: {
+                    print("Canceling new transaction")
+                    dismiss()
+                }, label: {
+                    Text("Cancel")
+                })
+                .buttonStyle(.mainButton(.cancel))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
         .sheet(item: $selectedSheet) { sheet in
             switch sheet {
             case .library:

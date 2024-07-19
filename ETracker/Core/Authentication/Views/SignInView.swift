@@ -17,7 +17,7 @@ struct SignInView: View {
         VStack(alignment: .leading, spacing: 40, content: {
             Text("Login to\nyour account")
                 .font(.system(size: 32, weight: .bold, design: .rounded))
-                .foregroundStyle(.purple700)
+                .foregroundStyle(.iris600)
                 .frame(maxWidth: .infinity, alignment: .leading)
             VStack(spacing: 20) {
                 VStack(alignment: .leading) {
@@ -45,7 +45,7 @@ struct SignInView: View {
                             }
                         }, label: {
                             Text("Forgot your password?")
-                                .foregroundStyle(.purple700)
+                                .foregroundStyle(.iris600)
                         })
                     }
                 }
@@ -64,7 +64,7 @@ struct SignInView: View {
                     Text("Sign In")
                 }
             })
-            .buttonStyle(.mainButton(purpleButton, stroke: .purple700, shadow: .purple400))
+            .buttonStyle(.mainButton())
             VStack(alignment: .center) {
                 HStack(alignment: .center) {
                     Text("Don't you have an account? ")
@@ -75,15 +75,15 @@ struct SignInView: View {
                         }
                     }, label: {
                         Text("Sign up.")
-                            .foregroundStyle(.purple700)
-                            .fontWeight(.bold)
+                            .foregroundStyle(.iris600)
+                            .fontWeight(.semibold)
                     })
                 }
             }
             .frame(maxWidth: .infinity)
             .padding(.bottom, 20)
         })
-        .padding()
+        .padding(22)
     }
 }
 

@@ -117,7 +117,7 @@ struct CustomNilDatePicker: View {
             }, label: {
                 Text("Save")
             })
-            .buttonStyle(.mainButton(purpleButton, stroke: .purple700, shadow: .purple400))
+            .buttonStyle(.mainButton())
             Button(action: {
                 withAnimation(.spring) {
                     currentDate = .now
@@ -127,7 +127,7 @@ struct CustomNilDatePicker: View {
             }, label: {
                 Text("Clear")
             })
-            .buttonStyle(.mainButton)
+            .buttonStyle(.mainButton(.cancel))
         }
         .padding(16)
         .onChange(of: currentMonth) { oldValue, newValue in
