@@ -27,9 +27,9 @@ struct TestView: View {
             Pie(slices: data)
                 .frame(width: 250)
         }
-        .toast(isShowing: $showToast) {
-            Text("Transaction Added")
-        }
+//        .toast(isShowing: $showToast) {
+//            Text("Transaction Added")
+//        }
     }
 }
 

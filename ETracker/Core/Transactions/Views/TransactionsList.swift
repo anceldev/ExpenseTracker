@@ -14,17 +14,19 @@ struct TransactionsList: View {
     @State var selectedTransaction: Transaction?
 //    @State var showShortInfo: Bool = true
     
-    var title: String {
-        guard let title = selectedCategory?.name else { return "Transactions" }
+    var title: String? {
+        guard let title = selectedCategory?.name else { return nil }
         return title
     }
     
     var body: some View {
         VStack{
-            Text(title)
-                .font(.system(size: 18, weight: .bold, design: .rounded))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 19)
+            if let title {
+                Text(title)
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundStyle(.gray800)
+            }
             ScrollView(.vertical, content: {
                 VStack(spacing: 9, content: {
                     ForEach(viewModel.filterByCategory(category: selectedCategory)) { transaction in
@@ -41,11 +43,7 @@ struct TransactionsList: View {
                                 viewModel.removeTransaction(id: transaction.id)
                             }
                         )
-                        .padding(.horizontal, 19)
-//                        .onTapGesture {
-//                            self.selectedTransaction = transaction
-//                            self.showShortInfo = true
-//                        }
+
                         .sheet(item: $selectedTransaction) { transaction in
                             TransactionInfo(
                                 id: transaction.id,
@@ -61,21 +59,20 @@ struct TransactionsList: View {
                         }
                     }
                 })
-//                .padding(.vertical, 19)
             })
             .scrollIndicators(.hidden)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding(.vertical, 19)
         .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 24))
     }
 }
 
 #Preview {
-    return NavigationStack {
-        TransactionsList(selectedCategory: nil)
-            .environment(TransactionsViewModel())
-            .padding()
+    NavigationStack {
+        MainTab {
+            ProfileBar()
+        }
+        .environmentObject(AuthenticationViewModel())
+        .environment(CategoriesViewModel())
     }
 }

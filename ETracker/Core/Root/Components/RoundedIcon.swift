@@ -17,7 +17,7 @@ struct RoundedIcon: View {
     }
     var body: some View {
         VStack {
-            Image(iconName)
+            Image(systemName: iconName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 20)
@@ -35,5 +35,5 @@ struct RoundedIcon: View {
 
 
 #Preview(traits: .sizeThatFitsLayout, body: {
-    RoundedIcon(iconName: "gas", selected: true)
+    RoundedIcon(iconName: "fuelpump", selected: true)
 })

@@ -64,17 +64,18 @@ final class ExpenseTrackerDatabase: ExpenseTrackerDatabaseProtocol {
 //            categoriesFetchDescriptor.fetchLimit = 1
 //
 //            guard try container.mainContext.fetch(categoriesFetchDescriptor).count == 0 else { return container }
+            
             if sampleDataAdded { return cont }
             
             // Default categories values
             print("Adding default categories...")
             cont.mainContext.insert(TransactionCategory(name: "Groceries", icon: .groceries, hexColor: "#555555"))
-            cont.mainContext.insert(TransactionCategory(name: "Gas", icon: .gas, hexColor: "#000000"))
-            cont.mainContext.insert(TransactionCategory(name: "Salary", icon: .cheapdollar, hexColor: "#676767"))
+            cont.mainContext.insert(TransactionCategory(name: "Gas", icon: .fuel, hexColor: "#000000"))
+            cont.mainContext.insert(TransactionCategory(name: "Salary", icon: .dollar, hexColor: "#676767"))
             cont.mainContext.insert(TransactionCategory(name: "Home", icon: .house, hexColor: "#676767"))
             cont.mainContext.insert(TransactionCategory(name: "Health", icon: .doctor, hexColor: "#676767"))
             cont.mainContext.insert(TransactionCategory(name: "Hobbies", icon: .hobbies, hexColor: "#676767"))
-            cont.mainContext.insert(TransactionCategory(name: "Clothing", icon: .clothes, hexColor: "#676767"))
+            cont.mainContext.insert(TransactionCategory(name: "Clothing", icon: .clothing, hexColor: "#676767"))
             cont.mainContext.insert(TransactionCategory(name: "Gym", icon: .gym, hexColor: "#676767"))
             cont.mainContext.insert(TransactionCategory(name: "Holidays", icon: .holidays, hexColor: "#676767"))
             

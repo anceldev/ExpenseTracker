@@ -23,11 +23,14 @@ struct RoundedButton: View {
             }
             Text(buttonName)
                 .font(.system(size: 10  , weight: .semibold, design: .rounded))
-                .foregroundStyle(selected ? .black : .gray1K)
+                .foregroundStyle(selected ? .gray700 : .gray600)
         }
     }
 }
 
 #Preview {
-    RoundedButton(iconName: "camera", selected: true, buttonName: "Salary")
+    VStack {
+        RoundedButton(iconName: "camera", selected: false, buttonName: "Salary")
+        RoundedButton(iconName: "camera", selected: true, buttonName: "Salary")
+    }
 }

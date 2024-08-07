@@ -23,7 +23,8 @@ struct ImageInput: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Receipt")
-                            .font(.system(size: 18, weight: .semibold, design: .rounded))
+                            .font(.system(size: 14, weight: .bold, design: .rounded))
+                            .foregroundStyle(.gray600)
                         HStack(spacing: 18) {
                             VStack(alignment: .center) {
                                 HStack(alignment: .center) {

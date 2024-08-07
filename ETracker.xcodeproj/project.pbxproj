@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B42135B32C627E55003E3B38 /* AddCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42135B22C627E55003E3B38 /* AddCategory.swift */; };
 		B457611D2C2ADEEA00832CAE /* AddTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457611C2C2ADEEA00832CAE /* AddTransaction.swift */; };
 		B457611F2C2AE08300832CAE /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457611E2C2AE08300832CAE /* PlusButton.swift */; };
 		B45761212C2AE14A00832CAE /* TransactionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45761202C2AE14A00832CAE /* TransactionsList.swift */; };
@@ -26,8 +27,7 @@
 		B471630F2C298EA90030CE5B /* ExpenseTrackerDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471630E2C298EA90030CE5B /* ExpenseTrackerDatabase.swift */; };
 		B47163112C298ECA0030CE5B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163102C298ECA0030CE5B /* Transaction.swift */; };
 		B47163152C298F2B0030CE5B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163142C298F2B0030CE5B /* Category.swift */; };
-		B47163172C298F450030CE5B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163162C298F450030CE5B /* Icon.swift */; };
-		B47163192C298F530030CE5B /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163182C298F530030CE5B /* HexColor.swift */; };
+		B47163192C298F530030CE5B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47163182C298F530030CE5B /* Color.swift */; };
 		B471631B2C298F710030CE5B /* ETSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631A2C298F710030CE5B /* ETSubscription.swift */; };
 		B471631D2C298F980030CE5B /* SubNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631C2C298F980030CE5B /* SubNotification.swift */; };
 		B471631F2C2992920030CE5B /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471631E2C2992920030CE5B /* MainTab.swift */; };
@@ -88,6 +88,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B42135B22C627E55003E3B38 /* AddCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategory.swift; sourceTree = "<group>"; };
 		B457611C2C2ADEEA00832CAE /* AddTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransaction.swift; sourceTree = "<group>"; };
 		B457611E2C2AE08300832CAE /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		B45761202C2AE14A00832CAE /* TransactionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsList.swift; sourceTree = "<group>"; };
@@ -106,8 +107,7 @@
 		B471630E2C298EA90030CE5B /* ExpenseTrackerDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerDatabase.swift; sourceTree = "<group>"; };
 		B47163102C298ECA0030CE5B /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		B47163142C298F2B0030CE5B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		B47163162C298F450030CE5B /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
-		B47163182C298F530030CE5B /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
+		B47163182C298F530030CE5B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		B471631A2C298F710030CE5B /* ETSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETSubscription.swift; sourceTree = "<group>"; };
 		B471631C2C298F980030CE5B /* SubNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubNotification.swift; sourceTree = "<group>"; };
 		B471631E2C2992920030CE5B /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
@@ -318,7 +318,7 @@
 				B47163292C29A0EF0030CE5B /* CustomInputFieldModifier.swift */,
 				B471632D2C29A6690030CE5B /* Buttons.swift */,
 				B471632F2C29A8150030CE5B /* Gradients.swift */,
-				B47163182C298F530030CE5B /* HexColor.swift */,
+				B47163182C298F530030CE5B /* Color.swift */,
 				B48AFB242C29FD19008C0886 /* NumberFormatter.swift */,
 				B47163402C29E32B0030CE5B /* TabItemModifier.swift */,
 			);
@@ -393,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				B47A9C9C2C2F2596003B0A26 /* CategoriesRow.swift */,
+				B42135B22C627E55003E3B38 /* AddCategory.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,7 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				B47163142C298F2B0030CE5B /* Category.swift */,
-				B47163162C298F450030CE5B /* Icon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -724,7 +724,6 @@
 				B47163382C29DCFC0030CE5B /* AuthenticationView.swift in Sources */,
 				B471634A2C29E63F0030CE5B /* RemoveTransactionUseCase.swift in Sources */,
 				B47163322C29B58A0030CE5B /* FormDivider.swift in Sources */,
-				B47163172C298F450030CE5B /* Icon.swift in Sources */,
 				B4969D9C2C341D86004EF398 /* AnalyticsView.swift in Sources */,
 				B4D855552C3EF94700E0AD4B /* NotificationsView.swift in Sources */,
 				B48AFB212C29F540008C0886 /* TransactionCell.swift in Sources */,
@@ -738,7 +737,8 @@
 				B4BDD1FD2C2C3A3F005934AD /* FetchAllCategoriesUseCase.swift in Sources */,
 				B47163342C29BF890030CE5B /* SignUpView.swift in Sources */,
 				B471633D2C29E0B30030CE5B /* AccountView.swift in Sources */,
-				B47163192C298F530030CE5B /* HexColor.swift in Sources */,
+				B47163192C298F530030CE5B /* Color.swift in Sources */,
+				B42135B32C627E55003E3B38 /* AddCategory.swift in Sources */,
 				B4D855442C3EE23500E0AD4B /* Logo.swift in Sources */,
 				B4D855462C3EE39300E0AD4B /* SubscriptionsViewModel.swift in Sources */,
 				B4D855492C3EE3AE00E0AD4B /* CreateSubscriptionUseCase.swift in Sources */,

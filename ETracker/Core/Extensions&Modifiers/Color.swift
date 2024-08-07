@@ -9,7 +9,8 @@ import SwiftUI
 
 extension Color {
     func toHex() -> String {
-        guard let components = UIColor(self).cgColor.components, components.count >= 3 else { return "#000000"}
+//        guard let components = UIColor(self).cgColor.components, components.count >= 3 else { return "#000000"}
+        guard let components = cgColor?.components, components.count >= 3 else { return "#000000" }
         let red = components[0]
         let green = components[1]
         let blue = components[2]
@@ -31,4 +32,14 @@ extension Color {
         
         self.init(red: red, green: green, blue: blue)
     }
+    static var defaultColors: [Color] = [
+        .red,
+        .orange,
+        .yellow,
+        .green,
+        .blue,
+        .mint,
+        .pink,
+        .purple
+    ]
 }

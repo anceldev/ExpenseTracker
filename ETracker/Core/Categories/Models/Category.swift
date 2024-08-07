@@ -36,3 +36,30 @@ class TransactionCategory: Identifiable {
     }
 }
 
+
+extension TransactionCategory {
+    enum Icon: String, Codable, CaseIterable, Identifiable {
+        case briefcase = "briefcase.fill"
+        case dollar = "dollarsign.circle.fill"
+        case clothing = "tshirt.fill"
+        case doctor = "stethoscope"
+        case entertaninment = "tv.inset.filled"
+        case fuel = "fuelpump.fill"
+        case groceries = "basket.fill"
+        case gym = "dumbbell.fill"
+        case hobbies = "figure.bowling"
+        case house = "house.fill"
+        case pets = "pawprint.fill"
+        case transportation = "bus.fill"
+        case trip = "airplane"
+        case holidays = "beach.umbrella.fill"
+        
+        var id: String {
+            self.rawValue
+        }
+    
+        var icon: Image {
+            Image(systemName: "self.rawValue")
+        }
+    }
+}

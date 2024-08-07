@@ -25,7 +25,7 @@ struct AddTransaction: View {
     
     @Environment(\.dismiss) private var dismiss
     @Environment(TransactionsViewModel.self) var viewModel
-    var categoriesViewModel = CategoriesViewModel()
+    @Environment(CategoriesViewModel.self) var categoriesViewModel
     
     @State var transactionKind: Transaction.Kind = .income
     @State var amount: Double = 0.0
@@ -36,8 +36,6 @@ struct AddTransaction: View {
     @State var selectedCategory: TransactionCategory? = nil
     
     @State var showDatePicker = false
-    //    @State var showReceiptButtons = false
-    
     @State var selectedSheet: SheetEnum?
     @State var showReceiptPicker: Bool = false
     
@@ -46,11 +44,8 @@ struct AddTransaction: View {
     
     @State var showToast = false
     
-    
-    //    init(viewModel: TransactionsViewModel) {
-    //        self.viewModel = viewModel
     init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = .purple600
+        UISegmentedControl.appearance().selectedSegmentTintColor = .iris600
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor:UIColor.white], for: .selected)
     }
     
@@ -69,25 +64,25 @@ struct AddTransaction: View {
                     .pickerStyle(.segmented)
                 }
             }
-            ScrollView(.vertical) {
-                VStack(spacing: 12) {
-                    CustomInputField(title: "Concept", text: concept, autoCorrectionDisabled: false) {
-                        TextField("Type concept", text: $concept)
-                    }
-                    MoneyInput(title: "Amount", amount: amount) {
-                        TextField("", value: $amount, formatter: NumberFormatter.moneyFormatter)
-                    }
-                    DateInput(title: "Date", showPicker: $selectedSheet, timestamp: timestamp)
-                    ImageInput(receiptEnum: $receiptEnum, receiptPicker: $selectedSheet)
-                        .frame(minHeight: 92)
-                    CategoryPicker(hint: "Select", anchor: .top, viewModel: categoriesViewModel, selectedCategory: $selectedCategory)
-                    
+            VStack(spacing: 12) {
+                CustomInputField(title: "Concept", text: concept, autoCorrectionDisabled: false) {
+                    TextField("Type concept", text: $concept)
                 }
+                
+                MoneyInput(title: "Amount", amount: amount) {
+                    TextField("", value: $amount, formatter: NumberFormatter.moneyFormatter)
+                }
+                DateInput(title: "Date", showPicker: $selectedSheet, timestamp: timestamp)
+                CategoryPicker(hint: "Select", anchor: .top, selectedCategory: $selectedCategory)
+                    .environment(categoriesViewModel)
+                ImageInput(receiptEnum: $receiptEnum, receiptPicker: $selectedSheet)
+                    .padding(.trailing, 19)
             }
+            .padding(.horizontal, 2)
             VStack {
                 Button(action: {
                     print("Adding category...")
-                    viewModel.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: selectedCategory!, timestamp: timestamp, receipt: receiptEnum == nil ? nil : imageReceipt)
+                    self.showToast = viewModel.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: selectedCategory!, timestamp: timestamp, receipt: receiptEnum == nil ? nil : imageReceipt)
                     withAnimation {
                         showToast.toggle()
                     }
@@ -120,6 +115,18 @@ struct AddTransaction: View {
         .toast(isShowing: $showToast) {
             Text("¡Transaction Added!")
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Label("Back", systemImage: "chevron.left")
+                }
+                .buttonStyle(.plain)
+                .fontWeight(.semibold)
+                .foregroundStyle(.gray700)
+            }
+        }
     }
 }
 struct MyDetent: CustomPresentationDetent {
@@ -131,5 +138,6 @@ struct MyDetent: CustomPresentationDetent {
     NavigationStack {
         AddTransaction()
             .environment(TransactionsViewModel())
+            .environment(CategoriesViewModel())
     }
 }

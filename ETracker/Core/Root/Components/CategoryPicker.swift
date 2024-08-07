@@ -13,9 +13,10 @@ struct CategoryPicker: View {
     //    var options: [String]
     var anchor: Anchor = .bottom
     
-    var viewModel: CategoriesViewModel
+//    var viewModel: CategoriesViewModel
     
     @Binding var selectedCategory: TransactionCategory?
+    @Environment(CategoriesViewModel.self) var categoriesViewModel
     /// View Properties
     @State private var showOptions: Bool = false
     /// Environment Scheme
@@ -27,7 +28,8 @@ struct CategoryPicker: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Category")
-                .font(.system(size: 18, weight: .bold, design: .rounded))
+                .font(.system(size: 14, weight: .bold, design: .rounded))
+                .foregroundStyle(.gray600)
             GeometryReader {
                 let size = $0.size
                 VStack(spacing: 0) {
@@ -43,12 +45,12 @@ struct CategoryPicker: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 26)
                                     .rotationEffect(.degrees(showOptions ? 180 : 270))
-                                    .foregroundStyle(selectedCategory != nil ? .purple700 : .gray1K4)
+                                    .foregroundStyle(selectedCategory != nil ? .iris600 : .gray1K4)
                             }
                             VerticalDivider()
                             
                             Text(selectedCategory?.name ?? hint)
-                                .foregroundStyle(selectedCategory == nil ? .gray1K4 : .purple700)
+                                .foregroundStyle(selectedCategory == nil ? .gray1K4 : .iris600)
                                 .font(.system(size: 18, weight: .semibold, design: .rounded))
                                 .lineLimit(1)
                             
@@ -64,18 +66,20 @@ struct CategoryPicker: View {
                         }
                         .zIndex(10)
                         NavigationLink {
-                            Text("Add New category")
+                            AddCategory()
+                                .environment(categoriesViewModel)
+                                .navigationBarBackButtonHidden()
                         } label: {
                             Label("Add Category", systemImage: "plus")
                                 .labelStyle(.iconOnly)
                                 .foregroundStyle(.white)
                                 .frame(width: 36, height: 36)
                                 .background(
-                                    LinearGradient(colors: purpleButton, startPoint: .bottom, endPoint: .top)
-                                        .shadow(.inner(color: .purple400, radius: 1, x: 0, y: -3))
+                                    .iris600
                                 )
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
+                        .id(UUID())
                         .padding(.trailing, 19)
                     }
                     .frame(width: size.width, height: 53)
@@ -85,11 +89,12 @@ struct CategoryPicker: View {
                 .clipShape(RoundedRectangle(cornerRadius: 18))
                 .overlay {
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(.gray300, lineWidth: 1)
+                        .stroke(.gray200.opacity(0.6), lineWidth: 2)
                 }
                 .frame(height: size.height, alignment: anchor == .top ? .bottom : .top)
             }
-            .frame(width: .infinity, height: 53)
+            .frame(height: 53)
+//            .frame(width: .infinity, height: 53)
         }
     }
     
@@ -97,7 +102,7 @@ struct CategoryPicker: View {
     @ViewBuilder
     func OptionsView() -> some View {
         ScrollView(.vertical) {
-            ForEach(viewModel.categories) { category in
+            ForEach(categoriesViewModel.categories) { category in
                 HStack(spacing: 0) {
                     Text(category.name)
                         .lineLimit(1)
@@ -105,8 +110,8 @@ struct CategoryPicker: View {
                         .fontDesign(.rounded)
                     Spacer(minLength: 0)
                 }
-                .foregroundStyle(selectedCategory?.id == category.id ? .purple900 : .gray1K3)
-                .foregroundStyle(.purple900)
+                .foregroundStyle(selectedCategory?.id == category.id ? .iris800 : .gray1K3)
+                .foregroundStyle(.iris900)
                 .animation(.none, value: selectedCategory)
                 .frame(height: 40)
                 .contentShape(.rect)
@@ -134,13 +139,11 @@ struct CategoryPicker: View {
     }
 }
 
-//
-#Preview {
-    NavigationStack {
-        TestView()
-            .padding()
-    }
-}
 #Preview(body: {
-    CategoryPicker(hint: "Picker",anchor: .bottom, viewModel: CategoriesViewModel(), selectedCategory: .constant(nil))
+    NavigationStack {
+//        CategoryPicker(hint: "Picker",anchor: .bottom, viewModel: CategoriesViewModel(), selectedCategory: .constant(nil))
+//            .environment(CategoriesViewModel())
+        CategoryPicker(hint: "Picker",anchor: .bottom, selectedCategory: .constant(nil))
+            .environment(CategoriesViewModel())
+    }
 })

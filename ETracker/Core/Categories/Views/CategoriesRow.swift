@@ -14,7 +14,7 @@ struct CategoriesRow: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                HStack(spacing: 25) {
+                HStack(spacing: 16) {
                     ForEach(viewModel.categories) { category in
                         Button(action: {
                             withAnimation(.spring) {
@@ -34,20 +34,30 @@ struct CategoriesRow: View {
                     }
                 }
             }
-            .padding(.horizontal, 19)
-            .padding(.vertical, 19)
+            .padding(.vertical, 2)
+//            .padding(.horizontal, 19)
+//            .padding(.horizontal)
+//            .padding(.vertical, 19)
             .frame(maxWidth: .infinity )
         }
         .scrollIndicators(.hidden)
         .frame(maxWidth: .infinity)
         .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
-        
     }
 }
 
-#Preview(traits: .sizeThatFitsLayout, body: {
-    CategoriesRow(selected: .constant(nil))
+//#Preview(traits: .sizeThatFitsLayout, body: {
+//    CategoriesRow(selected: .constant(nil))
+//        .environment(CategoriesViewModel())
+//        .background(.red.opacity(0.6))
+//})
+
+#Preview {
+    NavigationStack {
+        MainTab {
+            ProfileBar()
+        }
+        .environmentObject(AuthenticationViewModel())
         .environment(CategoriesViewModel())
-        .background(.red.opacity(0.6))
-})
+    }
+}

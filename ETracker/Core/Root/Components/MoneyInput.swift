@@ -22,17 +22,19 @@ struct MoneyInput<InputField: View>: View where InputField: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .font(.system(size: 18, weight: .bold, design: .rounded))
+                .font(.system(size: 14, weight: .bold, design: .rounded))
+                .foregroundStyle(.gray600)
             HStack(spacing: 16) {
                 inputField()
-                    .font(.system(size: 26, weight: .semibold, design: .rounded))
+                    .font(.system(size: 22, weight: .semibold, design: .rounded))
                     .fixedSize()
                     .padding(.leading, 19)
                     .keyboardType(.decimalPad)
+                    .foregroundStyle(.gray700)
                 VerticalDivider()
                 Text("$")
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
-                    .foregroundStyle(amount != 0.0 ? .purple400 : .gray1K2)
+                    .font(.system(size: 22, weight: .bold, design: .rounded))
+                    .foregroundStyle(amount != 0.0 ? .iris700 : .gray1K2)
                 Spacer()
             }
             .customInputField(.infinity)

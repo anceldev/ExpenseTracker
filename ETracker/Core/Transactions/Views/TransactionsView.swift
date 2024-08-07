@@ -7,13 +7,12 @@
 
 import SwiftUI
 
+
 struct TransactionsView: View {
-    
-//    var viewModel = TransactionsViewModel()
-//    @State private var viewModel = TransactionsViewModel()
+
     @Environment(TransactionsViewModel.self) var viewModel
-    @State private var categoriesViewModel = CategoriesViewModel()
-    
+    @Environment(CategoriesViewModel.self) var categoriesViewModel
+
     @State var showAddForm = false
     @State private var filterList: Transaction.Kind? = nil
     @State var selectedCategory: TransactionCategory? = nil
@@ -22,10 +21,28 @@ struct TransactionsView: View {
         ZStack {
             VStack(spacing: 20) {
                 CardView(income: viewModel.totalIncomes, expense: viewModel.totalExpenses)
-                CategoriesRow(selected: $selectedCategory)
-                    .environment(categoriesViewModel)
-                TransactionsList(selectedCategory: selectedCategory)
-                    .environment(viewModel)
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Text("Transactions")
+                            .foregroundStyle(.gray900)
+                            .font(.system(size: 22, weight: .bold, design: .rounded))
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.horizontal)
+                    .padding(.top)
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            CategoriesRow(selected: $selectedCategory)
+                                .environment(categoriesViewModel)
+                            TransactionsList(selectedCategory: selectedCategory)
+                                .environment(viewModel)
+                        }
+                    }
+                    .padding()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .padding()
         }
@@ -39,5 +56,6 @@ struct TransactionsView: View {
             ProfileBar()
         }
         .environmentObject(AuthenticationViewModel())
+        .environment(CategoriesViewModel())
     }
 }

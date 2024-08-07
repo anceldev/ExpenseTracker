@@ -14,6 +14,7 @@ struct MainTab<Content: View>: View where Content: View {
 
     @State private var viewModel = TransactionsViewModel()
     @State private var subsViewModel = SubscriptionsViewModel()
+    @State private var categoriesViewModel = CategoriesViewModel()
 
     @State var selectedTab: Tab = .home
     
@@ -42,6 +43,7 @@ struct MainTab<Content: View>: View where Content: View {
                 CustomTabBar(selectedTab: $selectedTab)
                     .environment(viewModel)
                     .environment(subsViewModel)
+                    .environment(categoriesViewModel)
             }
         }
         .ignoresSafeArea(.container, edges: .bottom)
@@ -54,5 +56,6 @@ struct MainTab<Content: View>: View where Content: View {
             ProfileBar()
         }
         .environmentObject(AuthenticationViewModel())
+        .environment(CategoriesViewModel())
     }
 }

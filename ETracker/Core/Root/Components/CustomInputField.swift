@@ -27,12 +27,12 @@ struct CustomInputField<InputField: View>: View where InputField: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .font(.system(size: 14, weight: .medium, design: .rounded))
+                .font(.system(size: 14, weight: .bold, design: .rounded))
                 .foregroundStyle(.gray600)
             HStack {
                 if let image = imageName {
                     VStack {
-                        Image(image)
+                        Image(systemName: image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 24)

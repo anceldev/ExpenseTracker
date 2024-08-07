@@ -25,7 +25,8 @@ struct DateInput: View {
         VStack(alignment: .leading) {
             if let title = title {
                 Text(title)
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .font(.system(size: 14, weight: .bold, design: .rounded))
+                    .foregroundStyle(.gray600)
             }
             HStack(spacing: 20) {
                 VStack {

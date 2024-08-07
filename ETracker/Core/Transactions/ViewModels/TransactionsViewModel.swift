@@ -50,13 +50,15 @@ public class TransactionsViewModel: TransactionsViewModelProtocol {
         fetchTransactions()
     }
 
-    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: TransactionCategory, timestamp: Date, receipt: UIImage?) {
+    func createTransaction(concept: String, amount: Double, transactionKind: Transaction.Kind, category: TransactionCategory, timestamp: Date, receipt: UIImage?) -> Bool {
         do {
             let receiptData: Data? = receipt?.jpegData(compressionQuality: 0.2) ?? nil
             try createTransactionUseCase.createTransaction(concept: concept, amount: amount, transactionKind: transactionKind, category: category, timestamp: timestamp, receipt: receiptData)
             fetchTransactions()
+            return true
         } catch {
             print("DEBUG - Error: Can't create transaction: \(error.localizedDescription)")
+            return false
         }
     }
     

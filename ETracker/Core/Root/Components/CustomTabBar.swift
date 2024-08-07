@@ -11,6 +11,8 @@ struct CustomTabBar: View {
     
     @Environment(TransactionsViewModel.self) var viewModel
     @Environment(SubscriptionsViewModel.self) var subsViewModel
+    @Environment(CategoriesViewModel.self) var categoriesViewModel
+    
     @Binding var selectedTab: Tab
     
     @Namespace var animation
@@ -24,14 +26,15 @@ struct CustomTabBar: View {
                 case .home:
                     AddTransaction()
                         .environment(viewModel)
+                        .environment(categoriesViewModel)
+                        .navigationBarBackButtonHidden()
                 case .subscriptions:
                     AddSubscription()
                         .environment(subsViewModel)
+                        .navigationBarBackButtonHidden()
                 default:
                     Text("Invalid selection")
                 }
-//                AddTransaction()
-//                    .environment(viewModel)
             } label: {
                 Image(systemName: "plus")
                     .resizable()
@@ -41,13 +44,12 @@ struct CustomTabBar: View {
                     .foregroundStyle(.white)
                     .padding(15)
                     .background(
-                        LinearGradient(colors: purpleButton, startPoint: .bottom, endPoint: .top)
-                            .shadow(.inner(color: .purple400, radius: 1, x: 0, y: -3))
+                        .iris600
                     )
                     .clipShape(.circle)
                     .overlay {
                         Circle()
-                            .stroke(.purple700, lineWidth: 1)
+                            .stroke(.iris600, lineWidth: 1)
                     }
                     .fontWeight(.bold)
             }
@@ -87,7 +89,7 @@ struct TabBarButton: View {
                     .renderingMode(.template)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 28)
-                    .foregroundStyle(self.selectedTab == tab ? .purple700.opacity(0.7) : .gray )
+                    .foregroundStyle(self.selectedTab == tab ? .iris600.opacity(0.9) : .gray )
                 
             }
             .frame(maxWidth: .infinity)
@@ -100,4 +102,5 @@ struct TabBarButton: View {
     CustomTabBar(selectedTab: .constant(.home))
         .environment(TransactionsViewModel())
         .environment(SubscriptionsViewModel())
+        .environment(CategoriesViewModel())
 })
